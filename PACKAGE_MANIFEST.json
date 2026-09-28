@@ -8,29 +8,17 @@
    "bytes": 64840,
    "sha256": "df4a3a3de7df04856a4ad4c3293ea2b35a2879783e7fca85ce5806f529c47acf"
   },
-  "style.css": {
-   "bytes": 42033,
-   "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
+  "assets/region.js": {
+   "bytes": 5718,
+   "sha256": "55fb409a79d49fcfc0f172d3562476242c75bde6f5f7dd9f46aa06455b615f50"
   },
   "assets/v4.js": {
    "bytes": 18525,
    "sha256": "36298043301ceddbea189a000e1e77f92d19b622ba49daa3354ff1e1297e586a"
   },
-  "assets/region.js": {
-   "bytes": 5718,
-   "sha256": "55fb409a79d49fcfc0f172d3562476242c75bde6f5f7dd9f46aa06455b615f50"
-  },
   "assets/v55.js": {
    "bytes": 43183,
    "sha256": "b20349057279a95104bd7b2cd813d2150842c6100fce68d141840ea53c627475"
-  },
-  "assets/vendor/leaflet/leaflet.js": {
-   "bytes": 147557,
-   "sha256": "3104b526504d0d61fd3099a4521e87f732ccc3174dec54e08de6ba8bde3e15ff"
-  },
-  "assets/vendor/leaflet/leaflet.css": {
-   "bytes": 14806,
-   "sha256": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6"
   },
   "assets/vendor/leaflet/images/layers-2x.png": {
    "bytes": 1259,
@@ -52,29 +40,33 @@
    "bytes": 618,
    "sha256": "264f5c640339f042dd729062cfc04c17f8ea0f29882b538e3848ed8f10edb4da"
   },
+  "assets/vendor/leaflet/leaflet.css": {
+   "bytes": 14806,
+   "sha256": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6"
+  },
+  "assets/vendor/leaflet/leaflet.js": {
+   "bytes": 147557,
+   "sha256": "3104b526504d0d61fd3099a4521e87f732ccc3174dec54e08de6ba8bde3e15ff"
+  },
   "data_v4/advisory/gg_v1.json.gz": {
    "bytes": 1041116,
    "sha256": "b43c578ce405084471ca0b41f1f7c0cb00bfc86770081abfac397b46e9ef187a"
-  },
-  "data_v4/grid_emd.json.gz": {
-   "bytes": 712240,
-   "sha256": "af8c32c3cd7235543c4a3183c73d8a4e71574d65319bb131fa7d2f815c1b3728"
-  },
-  "data_v4/sgg_matrix.json": {
-   "bytes": 154226,
-   "sha256": "b6481d3281af074fd727fb12bf06e2a2a1e1cf20d92a129cc7ced3951bf22374"
   },
   "data_v4/bjd_v4.json.gz": {
    "bytes": 181534,
    "sha256": "a9e52f096d3ac54b09ffde52187d562e4685595bd188db3dc1be6f36f89d8a71"
   },
-  "data_v4/ind_bnd.json.gz": {
-   "bytes": 109197,
-   "sha256": "327bbac4a0297b6e36c046286cfe112c1025f48c3f47ace45d16654b68018e5d"
-  },
   "data_v4/existing_pv_v4.json.gz": {
    "bytes": 72130,
    "sha256": "805bd8d70d948ad09a4c7115c19b45510cf6f72d5be09142b4228e428c96d0dd"
+  },
+  "data_v4/grid_emd.json.gz": {
+   "bytes": 712240,
+   "sha256": "af8c32c3cd7235543c4a3183c73d8a4e71574d65319bb131fa7d2f815c1b3728"
+  },
+  "data_v4/ind_bnd.json.gz": {
+   "bytes": 109197,
+   "sha256": "327bbac4a0297b6e36c046286cfe112c1025f48c3f47ace45d16654b68018e5d"
   },
   "data_v4/parcels/41111.json.gz": {
    "bytes": 2624,
@@ -428,9 +420,22 @@
    "bytes": 156938,
    "sha256": "f758bc493866c3d430d5d7aabedcf432ec24afee7863bf553dba6e7eeaf6fb52"
   },
+  "data_v4/sgg_matrix.json": {
+   "bytes": 154226,
+   "sha256": "b6481d3281af074fd727fb12bf06e2a2a1e1cf20d92a129cc7ced3951bf22374"
+  },
+  "data_v4/units_index.json": {
+   "bytes": 20969,
+   "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
+  },
   "docs/ADVISORY_README.md": {
    "bytes": 3846,
    "sha256": "ed5d1046ace08d0592597b9f64a4c1136cc841a68e98d995921d869f7dc3a3ea"
+  },
+  "style.css": {
+   "bytes": 42033,
+   "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
- }
+ },
+ "revision": "r2 2026-09-28: data_v4/units_index.json 추가 (v55.js pnuCard 가 참조하는 기존 발행 자산 — r1 패키지 누락분)"
 }
