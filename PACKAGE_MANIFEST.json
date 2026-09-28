@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 83030,
-   "sha256": "98c665085457fda2ce2af3448c4158f38b9580efee6b452c5c2ee76efa78cdda"
+   "bytes": 84419,
+   "sha256": "e2cf20b6eb21dc9791a53185bdbfc299ea903d66d933c8532fc5f5c718ecd681"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -429,13 +429,13 @@
    "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 8689,
-   "sha256": "1ffc920441eebeea63e720366a8eef248c586bfe54cfdb8bc9739df1d8f75379"
+   "bytes": 8961,
+   "sha256": "4ef3393909584fc03c4e82af47280fdf29553d0d7b443a6d5460d56c4ac3c846"
   },
   "style.css": {
    "bytes": 42033,
    "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
  },
- "revision": "r5 2026-09-28: 데이터 신뢰성·현실성 자문으로 재구성(탭·안내·사례 4곳·A1–A5·B1–B9·C1–C7·D1–D5 · 방법론 실험 UI 숨김 · 세션별 응답 저장 schema advisory_feedback_v2) · advisory.html·ADVISORY_README.md만 변경, 데이터 무변경"
+ "revision": "r6 2026-09-28: 데이터 자문 최종 문구 정합성(제목·탭 \"자료·산출 설명\"·평가 범위 문장·MW/시나리오 문구 통일·축 기호 제거) · advisory.html·ADVISORY_README.md만 변경, 데이터 무변경"
 }
