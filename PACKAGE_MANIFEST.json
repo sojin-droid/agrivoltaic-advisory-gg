@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 75927,
-   "sha256": "ff6680e44f1e2797dfd6997c12cada57e148948410f432d4b4337701b4284d13"
+   "bytes": 83030,
+   "sha256": "98c665085457fda2ce2af3448c4158f38b9580efee6b452c5c2ee76efa78cdda"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -429,13 +429,13 @@
    "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 7806,
-   "sha256": "dbf61f8a5330abb08eafafcd432b1963618f20f1530800cc1979eb9fd4f56dad"
+   "bytes": 8689,
+   "sha256": "1ffc920441eebeea63e720366a8eef248c586bfe54cfdb8bc9739df1d8f75379"
   },
   "style.css": {
    "bytes": 42033,
    "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
  },
- "revision": "r4 2026-09-28: 자문 문항 재개편(0 배경 · A1–A8 · B0–B7 · C1–C7 · D 종합) · advisory.html·ADVISORY_README.md 문구만 변경, 데이터 무변경"
+ "revision": "r5 2026-09-28: 데이터 신뢰성·현실성 자문으로 재구성(탭·안내·사례 4곳·A1–A5·B1–B9·C1–C7·D1–D5 · 방법론 실험 UI 숨김 · 세션별 응답 저장 schema advisory_feedback_v2) · advisory.html·ADVISORY_README.md만 변경, 데이터 무변경"
 }
