@@ -60,7 +60,7 @@ window.V55 = (() => {
       <h4>쉽게 말하면</h4><p>특별법 시행 후 농업진흥구역이 개방된다고 가정했을 때, 법인·국공유 농지만 이어 붙여도 약 50MW 이상이 되는 큰 땅 덩어리가 전국 어디에 있는지 보여주는 지도입니다. 산업단지와 계통 여유는 비교를 돕는 배경 레이어이며 후보를 고르는 조건이 아닙니다.</p>
       <h4>실제 분석 방법 · 기준</h4><ul>
         <li>후보 공간 = 21m 연접 단위. 지도의 도형은 그 단위에 속한 필지의 지적 폴리곤을 합쳐 2m 허용오차로 단순화한 것이다(면적 수치는 장부면적 원값). 시군·읍면동 경계로 자르지 않는다 — 경계를 넘는 단위는 하나로 표시한다.</li>
-        <li>대규모 = 장부면적 1,111,111㎡ 이상(≈50MW 등가 읽기 눈금). 상한은 없다.</li>
+        <li>대규모 = 장부면적 1,111,111㎡ 이상(약 50MW). 상한은 없다.</li>
         <li>계통 여유(읍면동) = 한전 분산전원 연계정보의 배전선로 잔여 연계가능용량을 담당 읍면동에 균등 배분한 하한(lo)과 공유 미조정 상한(hi). 단일 시점 스냅숏이며 매핑된 선로 수와 함께 변한다 — 실제 접속 가능 용량이 아니다.</li>
         <li>산업단지 = V-World 산업단지 경계. 반경·거리는 표시용 직선거리다.</li>
         <li>기존 시설 = 확보한 공개 자료 중 위치가 독립 검증된(VALID) 좌표만 점으로 표시한다. 나머지 등급(CONDITIONAL·UNVERIFIED·UNKNOWN)은 건수만 적는다.</li></ul>
@@ -80,7 +80,7 @@ window.V55 = (() => {
         <li><b>분석 단위는 시군</b>. 읍·면·동은 위치를 이해하는 배경(경계선)과 집계 기준으로만 쓰며, 후보 공간을 읍·면·동 경계로 자르지 않는다.</li>
         <li><b>제도 조건</b> — 시행 전 / 시행 후(농업진흥구역 개방) · 주거 이격 200m 적용 여부. 각 조합은 정본에 등재된 시나리오 실행값에서 읽는다.</li>
         <li><b>우선순위</b> — 발전 규모 · 계통 · 산업단지 중 복수 선택. 1개면 정렬, 2개 이상이면 비지배 집합(주요 비교 후보). 새 점수·가중치는 없다.</li>
-        <li><b>PNU·지번 검색</b> — 필지가 ① 적격이고 규모 기준 이상 후보 공간에 포함 ② 적격이나 규모 기준 미달 ③ 분석 기준 적격 목록에 없음 중 어디인지 시행 전·후로 보여준다. ③은 부적격 판정이 아니다 — 지목·소유(개인 소유는 분석 기준 밖)·제외조건 어느 것인지 이 화면은 구분하지 않는다.</li></ul>` + COMMON_TAIL,
+        <li><b>PNU·지번 검색</b> — 필지가 ① 설치 가능하고 규모 기준 이상 후보 공간에 포함 ② 설치 가능하나 규모 기준 미달 ③ 분석 대상 목록에 없음 중 어디인지 시행 전·후로 보여준다. ③은 설치 불가 판정이 아니다 — 지목·소유(개인 소유는 분석 기준 밖)·제외조건 어느 것인지 이 화면은 구분하지 않는다.</li></ul>` + COMMON_TAIL,
     scenarios: `<h3>방법론 더 보기 — 시나리오별 결과</h3>
       <h4>쉽게 말하면</h4><p>농업진흥구역·농업보호구역 개방, 주거 이격, 매립지 범위, 소유 기준을 바꿔 가며 설치 가능 면적과 후보 공간이 어떻게 달라지는지 비교합니다.</p>
       <h4>실제 분석 방법 · 기준</h4><ul>
@@ -246,14 +246,14 @@ window.V55 = (() => {
     },
     async nameOf(pnu) { const B = await this.bjd(); const r = B && B.rows.find(([c]) => c === pnu.slice(0, 10)); const san = pnu[10] === '2';
       const bon = String(+pnu.slice(11, 15)), bu = +pnu.slice(15, 19); return (r ? r[1] + ' ' : '') + (san ? '산 ' : '') + bon + (bu ? '-' + bu : ''); },
-    /** 분류: 1 = 적격 + 규모 기준 이상 후보 공간 포함 · 2 = 적격이나 규모 기준 미달 · 3 = 분석 기준 적격 목록에 없음(부적격 단정 아님) */
+    /** 분류: 1 = 설치 가능 + 규모 기준 이상 후보 공간 포함 · 2 = 설치 가능하나 규모 기준 미달 · 3 = 분석 대상 목록에 없음(설치 불가 단정 아님) */
     classify(data, pnuStr, run, minM2 = 66667) {
       const R = data && data.runs[run]; if (!R) return {cls: null};
       const lab = R.p[pnuStr]; if (lab == null) return {cls: 3};
       const [a, np] = R.u[lab] || [null, null];
       return {cls: a != null && a >= minM2 ? 1 : 2, lab, a, n: np};
     },
-    CLS: {1: ['①', '적격 · 규모 기준 이상 후보 공간에 포함', '#3E7A2E'], 2: ['②', '적격이나 현재 규모 기준 미달', '#B8860B'], 3: ['③', '분석 기준 적격 목록에 없음 — 부적격 단정 아님(지목·소유·제외조건 미구분)', '#8A8F98']},
+    CLS: {1: ['①', '설치 가능 · 규모 기준 이상 후보 공간에 포함', '#3E7A2E'], 2: ['②', '설치 가능하나 현재 규모 기준 미달', '#B8860B'], 3: ['③', '분석 대상 목록에 없음 — 설치 불가라는 뜻은 아님(지목·소유·제외조건 미구분)', '#8A8F98']},
   };
 
   // ── 기존 태양광 시설(VALID 좌표만) ──
@@ -278,7 +278,7 @@ window.V55 = (() => {
     if (!el) return;
     const rk = this.ranks(rows || []);
     // 기하 상태 — 순위·비교에서 빼지 않는다(판정은 장부 값). 도형이 정상과 같지 않다는 것만 행에 적는다.
-    const geomTag = lab => { if (missing && missing.has(lab)) return ' · <span class="unk">지도 도형 없음(지적 폴리곤 부재 · 부적격 아님)</span>';
+    const geomTag = lab => { if (missing && missing.has(lab)) return ' · <span class="unk">지도 도형 없음(지적 폴리곤이 없음 · 설치 불가라는 뜻은 아님)</span>';
       const q = qual && qual.get(lab); return q && q.t === 'quality_review' ? ` · <span class="unk">기하 품질 검토(${q.ql})</span>` : ''; };
     const isRank = sel.mode === 'rank', ax = sel.axis;
     const hdr = `<tr><th class="l">${isRank ? '순위' : sel.mode === 'compare' ? '후보' : '면적순(순위 아님)'}</th><th>면적</th><th>참고 MW</th><th>계통 여유<br><small>참고 · lo MW</small></th><th>산단 거리<br><small>km</small></th><th>간척 %</th><th>시군 전력판매량<br><small>대비 %(참고)</small></th><th>필지</th><th>걸침</th></tr>`;
@@ -289,7 +289,7 @@ window.V55 = (() => {
       return `<tr class="rowbtn ${r.lab === pickId ? 'pick' : ''}" data-lab="${r.lab}"><td class="l">${lead}<div style="font-size:11px;color:var(--muted)">#${r.lab} · 면적 ${R.ra ?? '—'}위 · 계통 ${R.rb ?? '—'}위 · 산단 ${R.rc ?? '—'}위${geomTag(r.lab)}</div></td>` +
         cell('a', `${km2(r.a, 2)} km²`) + `<td>${mwOf(r)}</td>` + cell('b', r.lo == null ? '<span class="unk">알 수 없음</span>' : n(r.lo)) + cell('c', r.d == null ? '<span class="unk">알 수 없음</span>' : r.d.toFixed(1)) +
         `<td>${r.recl == null ? '—' : n(r.recl)}</td><td>${r.dsh == null ? '—' : r.dsh}</td><td>${n(r.n)}</td><td>${r.ne > 1 ? `읍면동 ${r.ne}곳` : '—'}</td></tr>`; }).join('');
-    el.innerHTML = hdr + (body || `<tr><td colspan="9" class="l" style="color:var(--muted)">이 조건에 해당하는 후보 공간이 없음 — 법인·국공유 소유 농지를 21m로 이은 결과가 이 규모에 못 미친다는 뜻이며, 이 지역 농지가 부적격이라는 뜻이 아님</td></tr>`);
+    el.innerHTML = hdr + (body || `<tr><td colspan="9" class="l" style="color:var(--muted)">이 조건에 해당하는 후보 공간이 없음 — 법인·국공유 소유 농지를 21m로 이은 결과가 이 규모에 못 미친다는 뜻이며, 이 지역 농지에 설치할 수 없다는 뜻이 아님</td></tr>`);
     el.querySelectorAll('tr.rowbtn').forEach(tr => tr.onclick = () => onPick && onPick(sel.list.find(r => r.lab === +tr.dataset.lab)));
   };
   top10.markers = function (group, sel, {onPick} = {}) {
@@ -335,12 +335,12 @@ window.V55 = (() => {
     if (!data) { el.innerHTML = `<div class="v55-pnu"><div class="h">PNU ${pnuStr}</div><div class="nm">${nm}</div>${brNote}<div class="v55-hint">이 시군의 필지 소속 자산이 없음(분석 모집단 밖 시군).</div></div>`; return; }
     if (!_miss) { const U = await V4.data('units_index'); _miss = new Set((U.missing || []).map(m => m.lab)); }
     const rowHTML = (label, run) => { const c = pnu.classify(data, pnuStr, run, minM2); const C = pnu.CLS[c.cls] || ['—', '자료 없음', '#999'];
-      const noGeom = run === 'R2_promo' && c.lab != null && _miss.has(c.lab) ? ' · <b>후보 공간 도형 없음</b>(소속 필지의 지적 폴리곤이 없어 지도에 그리지 못함 — 적격·소속은 그대로이며 부적격 아님)' : '';
-      return `<div class="row"><div class="s">${label}</div><div><span class="v55-cls" style="background:${C[2]}">${C[0]}</span>${C[1]}${c.lab != null ? `<div class="v55-hint">후보 공간 #${c.lab} · ${km2(c.a, 2)} km² ≈ ${mw(c.a)} MW · 필지 ${n(c.n)} · 규모 기준 ${km2(minM2, 3)} km²(${mw(minM2)} MW 등가)${noGeom}</div>` : ''}</div></div>`; };
+      const noGeom = run === 'R2_promo' && c.lab != null && _miss.has(c.lab) ? ' · <b>후보 공간 도형 없음</b>(소속 필지의 지적 폴리곤이 없어 지도에 그리지 못함 — 설치 가능 판정과 소속은 그대로이며 설치 불가라는 뜻은 아님)' : '';
+      return `<div class="row"><div class="s">${label}</div><div><span class="v55-cls" style="background:${C[2]}">${C[0]}</span>${C[1]}${c.lab != null ? `<div class="v55-hint">후보 공간 #${c.lab} · ${km2(c.a, 2)} km² ≈ ${mw(c.a)} MW · 필지 ${n(c.n)} · 규모 기준 ${km2(minM2, 3)} km²(${mw(minM2)} MW)${noGeom}</div>` : ''}</div></div>`; };
     const c2 = pnu.classify(data, pnuStr, 'R2_promo', minM2);
     el.innerHTML = `<div class="v55-pnu"><div class="h">PNU ${pnuStr} · 시군 ${nameOf(sgg)}</div><div class="nm">${nm}</div>${brNote}
       ${rowHTML('특별법 시행 전', 'R0_current')}${rowHTML('특별법 시행 후<br><small>(농업진흥구역 개방 가정)</small>', 'R2_promo')}${rowHTML('특별법 시행 후<br><small>(농업진흥지역 전체 개방 가정)</small>', 'R3_zone_all')}
-      <div class="v55-hint" style="margin-top:8px">③은 부적격 판정이 아님 — 지목·소유(개인 소유 농지는 분석 기준 밖)·제외조건 중 어느 것인지 이 화면은 구분하지 않음. 필지 단위 클릭 대신 검색으로만 확인함.</div>
+      <div class="v55-hint" style="margin-top:8px">③은 설치 불가 판정이 아님 — 지목·소유(개인 소유 농지는 분석 기준 밖)·제외조건 중 어느 것인지 이 화면은 구분하지 않음. 필지 단위 클릭 대신 검색으로만 확인함.</div>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn btn-primary" id="pnuGo">이 필지의 시군(${nameOf(sgg)})으로 분석하기 · 농업진흥구역 개방 가정</button></div></div>`;
     el.querySelector('#pnuGo').onclick = () => onGo && onGo(sgg, c2.lab != null ? c2.lab : null);
   }

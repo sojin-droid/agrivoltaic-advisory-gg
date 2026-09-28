@@ -21,9 +21,9 @@
 
   /* 영문 표제 = 본사 세리프(Source Serif 4), 한글 표제 = 고딕(Noto Sans KR) —
      한글 세리프(명조계) 삐침이 본문 고딕과 어긋난다는 피드백(2026-08-25)으로 교체 */
-  --serif:'Source Serif 4','Noto Sans KR', sans-serif;
-  --sans:'Inter','Noto Sans KR', sans-serif;
-  --mono:'JetBrains Mono', monospace;                 /* 본사 --mono 정렬 */
+  --serif:'Source Serif 4','Pretendard Variable', Pretendard, sans-serif;   /* 영문·숫자는 세리프, 한글은 Pretendard */
+  --sans:'Pretendard Variable', Pretendard, 'Inter', sans-serif;   /* 한글 Pretendard (assets/vendor/pretendard · SIL OFL) */
+  --mono:'JetBrains Mono','Pretendard Variable', monospace;                 /* 본사 --mono 정렬 */
   --maxw:1160px;
 }
 
