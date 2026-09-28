@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 84419,
-   "sha256": "e2cf20b6eb21dc9791a53185bdbfc299ea903d66d933c8532fc5f5c718ecd681"
+   "bytes": 84436,
+   "sha256": "efa379de60d884a84a42f1f5c20f2ca05d24a822cc457ae3eb9dd303b60c8ea3"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -429,13 +429,13 @@
    "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 8961,
-   "sha256": "4ef3393909584fc03c4e82af47280fdf29553d0d7b443a6d5460d56c4ac3c846"
+   "bytes": 8956,
+   "sha256": "aa4ed5a6c56576ddfee33750ed7faba89617c3e1e14c89026a992feff3e26ee4"
   },
   "style.css": {
    "bytes": 42033,
    "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
  },
- "revision": "r6 2026-09-28: 데이터 자문 최종 문구 정합성(제목·탭 \"자료·산출 설명\"·평가 범위 문장·MW/시나리오 문구 통일·축 기호 제거) · advisory.html·ADVISORY_README.md만 변경, 데이터 무변경"
+ "revision": "r7 2026-09-28: B2 항목명(농업진흥지역 경계 자료) · D 안내(자료·산출 결과) · 검토 안내에 방법론 별도 자문 문장 분리 · 문구만 변경, 데이터 무변경"
 }
