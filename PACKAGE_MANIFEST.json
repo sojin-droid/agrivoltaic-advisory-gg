@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 92914,
-   "sha256": "94760909c58e10947b61f2837d423f41d358fb32fb13abf4aeedc11b4076ea44"
+   "bytes": 95110,
+   "sha256": "c6a5c319f97303fb7431664440b1c560f84fd1d8213467d4e38c9abca1774db8"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -53,8 +53,8 @@
    "sha256": "153ba84c03eb48db5c76325451cd9fd5256d6162a8f767b5fdf38a4f97724610"
   },
   "data_v4/advisory/gg_v1.json.gz": {
-   "bytes": 7062258,
-   "sha256": "fe79dbfd55cc576f610e34502c9db7c92aa5f4761a273e87e11b47ec645263c4"
+   "bytes": 3147202,
+   "sha256": "3bce7ae65eb3ff84caaaf91dbc5df333d1caa7e3836de37fa46fea1e084e75d5"
   },
   "data_v4/bjd_v4.json.gz": {
    "bytes": 181534,
@@ -815,7 +815,183 @@
   "assets/vendor/pretendard/woff2-dynamic-subset/PretendardVariable.subset.91.woff2": {
    "bytes": 37996,
    "sha256": "fc9fcd1bea9c8f43f97136a1e89bfa6e34db85f820f86538288647b4c24c5b06"
+  },
+  "data_v4/advisory/geom/41111.json.gz": {
+   "bytes": 8363,
+   "sha256": "ce6e72f3b3461aa16c2b1540a6a0bf8d42668426c00e6d8ca1fabc9a7eaabf35"
+  },
+  "data_v4/advisory/geom/41113.json.gz": {
+   "bytes": 19714,
+   "sha256": "ada4fcb53a5bb0d8eec5fa4c0f29d2b3a83efb950c7cd3adbedae858cf092ab6"
+  },
+  "data_v4/advisory/geom/41115.json.gz": {
+   "bytes": 4029,
+   "sha256": "27d828a7a90231373fcfde80b814406a320378f16d6f8e79a4a8a124eeaecd1a"
+  },
+  "data_v4/advisory/geom/41117.json.gz": {
+   "bytes": 8200,
+   "sha256": "96ff94d6c5c40d87dfa4eca1faa29d3aed741b55826f8cc1c6c2192c57eb5222"
+  },
+  "data_v4/advisory/geom/41131.json.gz": {
+   "bytes": 11953,
+   "sha256": "c1f916d0009a16e1fd635d74018dd6c84e728d3f202378a10ce9b4c9fb103f37"
+  },
+  "data_v4/advisory/geom/41133.json.gz": {
+   "bytes": 1395,
+   "sha256": "8a6f5bcafde229fea416e10fe0c26a61837a4d6c37d75ad345954ee419355f53"
+  },
+  "data_v4/advisory/geom/41135.json.gz": {
+   "bytes": 3719,
+   "sha256": "6c7ba7cbd0d9ac31000252ee141ca15783c2cd0edd8e300774102bc72ab99194"
+  },
+  "data_v4/advisory/geom/41150.json.gz": {
+   "bytes": 15972,
+   "sha256": "d30bb2c1bd78bea3ec2d81ec644379e795881d585e43f606c9d0212bbce559aa"
+  },
+  "data_v4/advisory/geom/41171.json.gz": {
+   "bytes": 5339,
+   "sha256": "3f9d29dadb3c0aca920d9e59f2255689791864c932d13e43cc3333b346165776"
+  },
+  "data_v4/advisory/geom/41173.json.gz": {
+   "bytes": 3862,
+   "sha256": "e004970563a1e9464359fdff61cc2f61dc6e07d2ebe1cfc2067711c26ecdc8ed"
+  },
+  "data_v4/advisory/geom/41192.json.gz": {
+   "bytes": 2754,
+   "sha256": "3db5d230fa334936bceebe80e974335f74a199e505729336e5e564179d191386"
+  },
+  "data_v4/advisory/geom/41194.json.gz": {
+   "bytes": 1868,
+   "sha256": "0dde1d1289e410c6bb47c14687d9f142a46fc4c4e5d8b7eed5d1acfcfd60226b"
+  },
+  "data_v4/advisory/geom/41196.json.gz": {
+   "bytes": 6005,
+   "sha256": "9e21ccc023ca1f48c9aaa9585f115dc603a1bf1784b279071bb7c74b31c36b90"
+  },
+  "data_v4/advisory/geom/41210.json.gz": {
+   "bytes": 8774,
+   "sha256": "3ad2fb507349ab0c0656081699976430b683abf9e36409890340ac40853ba675"
+  },
+  "data_v4/advisory/geom/41220.json.gz": {
+   "bytes": 368057,
+   "sha256": "64035c8663c1a275c95d9b735b3a2752b91f07084645880163329e9837352026"
+  },
+  "data_v4/advisory/geom/41250.json.gz": {
+   "bytes": 29754,
+   "sha256": "e6f0221bf8f5102b6e7ee66ecce752228d7ae297c1812544ec8ad55352be308d"
+  },
+  "data_v4/advisory/geom/41271.json.gz": {
+   "bytes": 13742,
+   "sha256": "910450856550862ece2e0a083a5c1031fdef3837d584851395126762e4e5009e"
+  },
+  "data_v4/advisory/geom/41273.json.gz": {
+   "bytes": 23126,
+   "sha256": "77000be4b3b3b78d8651259f7a09a9281175bf4adda3f4b926300a3791a4f20d"
+  },
+  "data_v4/advisory/geom/41281.json.gz": {
+   "bytes": 33827,
+   "sha256": "e367c81fb670c43131e73c012355379fc34a10f445256980921bf421b1674081"
+  },
+  "data_v4/advisory/geom/41285.json.gz": {
+   "bytes": 17955,
+   "sha256": "ff38be8589c7b4bd051e74039ad6cc312fbb8b75aee539ba06df2adab5726637"
+  },
+  "data_v4/advisory/geom/41287.json.gz": {
+   "bytes": 17746,
+   "sha256": "e4e53fe63587aed23e52d566258d9d55d1e4122df7bdfc9abd6b3a16643249a8"
+  },
+  "data_v4/advisory/geom/41290.json.gz": {
+   "bytes": 7284,
+   "sha256": "40a5c83f20cc9481ab3853b8092fe44a639b6afdbc4ac0ddca313cae03e5729a"
+  },
+  "data_v4/advisory/geom/41310.json.gz": {
+   "bytes": 7454,
+   "sha256": "87c52519a3e8312cc4dd4a50c219193336e87c05fae2d158be5b65d9e7f707b8"
+  },
+  "data_v4/advisory/geom/41360.json.gz": {
+   "bytes": 150180,
+   "sha256": "0ea11d7311c2e21f075bfb47c735c64a63ea58d95b93eb5c03efb56631923c78"
+  },
+  "data_v4/advisory/geom/41370.json.gz": {
+   "bytes": 38638,
+   "sha256": "16990424a175bf95578998575b21bbccc81d146326210c2ced68b5943a13ca97"
+  },
+  "data_v4/advisory/geom/41390.json.gz": {
+   "bytes": 18468,
+   "sha256": "74b25d85da06f394330b5b71c8711e69f8bbd35afc9ad11aa24694edca2fb8c5"
+  },
+  "data_v4/advisory/geom/41410.json.gz": {
+   "bytes": 4031,
+   "sha256": "042795f335684b90b1ceaeaac1849bb5b04a4956712065bd11c28ce75b796f30"
+  },
+  "data_v4/advisory/geom/41430.json.gz": {
+   "bytes": 7819,
+   "sha256": "18d8cefcb1f08353ab0b8b77921b5cf89ebc9bc49c4514457a4c89075329b0ad"
+  },
+  "data_v4/advisory/geom/41450.json.gz": {
+   "bytes": 9486,
+   "sha256": "5f5e291e3641a762d09a37886ff71f42a7efa97c04c78f19da84fd7fd9b257ef"
+  },
+  "data_v4/advisory/geom/41461.json.gz": {
+   "bytes": 233092,
+   "sha256": "132b8446c8a59ab30cc3980a0a5e3a47c1c55b6163e2bd1c204fb89204f3ecaf"
+  },
+  "data_v4/advisory/geom/41463.json.gz": {
+   "bytes": 49836,
+   "sha256": "5985e1f2aa378437f7de471f7ed2f363d1df32cf1fff9cc7f863cdd185acdf0f"
+  },
+  "data_v4/advisory/geom/41465.json.gz": {
+   "bytes": 14812,
+   "sha256": "b072079bca7228ea07d340bc1fff157b6b2b76015510c7e31faf72bfb1baebef"
+  },
+  "data_v4/advisory/geom/41480.json.gz": {
+   "bytes": 181015,
+   "sha256": "0d0b4e90778e63379f6d6e7bfa70603cea79708380d5739df8e97a2483e54e32"
+  },
+  "data_v4/advisory/geom/41500.json.gz": {
+   "bytes": 339474,
+   "sha256": "2458677413b2dbc24cc693cabf6e2785b9e4e97e08539080dfcba44a5bd43cab"
+  },
+  "data_v4/advisory/geom/41550.json.gz": {
+   "bytes": 301236,
+   "sha256": "d0e4a250fcc3b1e72e7fcb4ba0772455e6157c1cc9acc509d2e2971e52f56a3e"
+  },
+  "data_v4/advisory/geom/41570.json.gz": {
+   "bytes": 62974,
+   "sha256": "19b9c263b0f33cf8e9f7708f162590dbf987024e2e7a621163cd8a57b14e51b4"
+  },
+  "data_v4/advisory/geom/41590.json.gz": {
+   "bytes": 395851,
+   "sha256": "a4f07dbe7902b78c6b8b7c5e8696d6559f9a0dcc295172b2e4a18689e488704d"
+  },
+  "data_v4/advisory/geom/41610.json.gz": {
+   "bytes": 155415,
+   "sha256": "c1018244855807b49bc5ce0a740d1044fd67ec90b320964fa8cd2de9e7f3810e"
+  },
+  "data_v4/advisory/geom/41630.json.gz": {
+   "bytes": 137030,
+   "sha256": "a772d778062588fd60382fe846793b253cb05750a072761c8ec2b00a91bd470d"
+  },
+  "data_v4/advisory/geom/41650.json.gz": {
+   "bytes": 315969,
+   "sha256": "5f4f41647c4352f73a5dc305d0ae1e0e8669196bc8a0338ecf5061db886dbd9b"
+  },
+  "data_v4/advisory/geom/41670.json.gz": {
+   "bytes": 275061,
+   "sha256": "799a9a1971a1914056e52ea05d32ab289b2016ee1e91a3a28d64cc3efbbddcce"
+  },
+  "data_v4/advisory/geom/41800.json.gz": {
+   "bytes": 105896,
+   "sha256": "9cae24221c081ba94d9d031e8c55d20155c42ea30d733e13474f0f6663cdd038"
+  },
+  "data_v4/advisory/geom/41820.json.gz": {
+   "bytes": 172042,
+   "sha256": "360e37ed492c05ddc2f2f00d8c809efbef5e8aaadbaa86416a1795a3daf98f46"
+  },
+  "data_v4/advisory/geom/41830.json.gz": {
+   "bytes": 198441,
+   "sha256": "a1564f2bfdff7a9833c4156815254ad3b755a5c9321cf37a098c76baa7931451"
   }
  },
- "revision": "r12 2026-09-28: 후보 공간 면적 하한(11,111㎡) 제거 — 경기도 21m 후보 공간 전량 51,524곳(이전 2,147곳 · 11,111㎡ 이상 부분은 값·도형 동일) · 데이터 예외 사례를 규칙 재적용 결과 #1291066 으로 · B2 \"최소면적 관련 자료\" 항목 삭제 · ② 탭에 \"사용한 자료의 출처와 시점\" 표 · 지도 캔버스 렌더 · 필지 검색 카드 \"부적격\" 표현 정리"
+ "revision": "r13 2026-09-28: 후보 공간 도형을 시군별 파일(data_v4/advisory/geom · 44개)로 분리해 휴대폰 메모리 사용을 줄임 · 경기도 전체 보기는 점 타일 · 이전 r12 — 후보 공간 면적 하한(11,111㎡) 제거 — 경기도 21m 후보 공간 전량 51,524곳(이전 2,147곳 · 11,111㎡ 이상 부분은 값·도형 동일) · 데이터 예외 사례를 규칙 재적용 결과 #1291066 으로 · B2 \"최소면적 관련 자료\" 항목 삭제 · ② 탭에 \"사용한 자료의 출처와 시점\" 표 · 지도 캔버스 렌더 · 필지 검색 카드 \"부적격\" 표현 정리"
 }

@@ -270,6 +270,19 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
   if (!D) { document.body.insertAdjacentHTML('beforeend', '<p style="padding:20px">자문 자산(data_v4/advisory/gg_v1.json.gz)을 불러오지 못했습니다.</p>'); return; }
   $('genStamp').textContent = `자문 자산 생성 ${D.generated} · 후보 공간 ${D.summary.n_units.toLocaleString('ko-KR')}곳`;
   const U = D.units, UBY = new Map(U.map(u => [u.id, u]));
+  // 도형은 시군별 파일에 있다 — 그 시군을 처음 볼 때 읽어 후보 공간에 붙인다(전량을 한꺼번에 들고 있지 않는다)
+  const _gl = new Map();
+  const loadGeom = sgg => { if (!sgg) return Promise.resolve(); if (!_gl.has(sgg)) _gl.set(sgg, V55.gz(`${D.geom_dir}/${sgg}.json.gz`).then(G => { if (G) for (const k in G.g) { const u = UBY.get(+k); if (u) u.geometry = G.g[k]; } }));
+    return _gl.get(sgg); };
+  // 점 레이어(캔버스 타일) — 경기도 전체처럼 후보 공간이 수만 곳일 때 레이어를 곳마다 만들지 않고 타일에 직접 찍는다
+  const PtLayer = L.GridLayer.extend({
+    initialize(pts, o) { this._pts = pts; L.GridLayer.prototype.initialize.call(this, o); },
+    createTile(c) { const t = L.DomUtil.create('canvas'), sz = this.getTileSize(); t.width = sz.x; t.height = sz.y;
+      const g = t.getContext('2d'), nw = c.scaleBy(sz), a = this._map.unproject(nw.subtract([8, 8]), c.z), b = this._map.unproject(nw.add(sz).add([8, 8]), c.z);
+      for (const p of this._pts) { if (p.lat > a.lat || p.lat < b.lat || p.lon < a.lng || p.lon > b.lng) continue;
+        const q = this._map.project([p.lat, p.lon], c.z).subtract(nw), r = p.a >= 222222 ? 5 : p.a >= 66667 ? 3.2 : 1.8;
+        g.beginPath(); g.arc(q.x, q.y, r, 0, 6.2832); g.fillStyle = COLOR(p.a); g.fill(); if (r > 2) { g.strokeStyle = '#6B4E16'; g.lineWidth = 1; g.stroke(); } }
+      return t; } });
   const SGG = Object.keys(D.sgg_labels).sort((a, b) => D.sgg_labels[a].localeCompare(D.sgg_labels[b], 'ko'));
   const sName = s => D.sgg_labels[s] || s;
   const EMD = new Map(D.emd.map(e => [e.e, e]));
@@ -315,8 +328,9 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
     document.querySelectorAll('.adv-pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + b.dataset.t));
     setTimeout(() => { Object.values(maps).forEach(m => m.invalidateSize());
       // 숨은 탭에서 처음 그린 지도는 크기가 0이라 범위 맞춤이 어긋난다 — 처음 열 때 한 번 다시 맞춘다
-      try { if (b.dataset.t === 'user' && !uFitted && uLayer.getLayers().length) { uFitted = true; um.fitBounds(uLayer.getBounds(), {padding: [20, 20], maxZoom: 13}); } } catch (e) {} }, 50); };
-  let uFitted = false;
+      // ③ 지도는 탭을 처음 열 때 그린다(후보 공간 전량 5만여 곳 — 숨은 탭에서 미리 그리면 메모리만 쓴다)
+      try { if (b.dataset.t === 'user' && !uDrawn) { uDrawn = true; uRender(); } } catch (e) {} }, 50); };
+  let uDrawn = false;
   const mkMap = id => { const m = L.map(id, {center: [37.4, 127.1], zoom: 9, scrollWheelZoom: true, preferCanvas: true});
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom: 18, attribution: '© Esri'}).addTo(m); maps[id] = m; return m; };
 
@@ -393,7 +407,8 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
   const polyStyle = (u, hi) => u.t === 'quality_review' ? {color: hi ? '#0C356A' : '#5A6270', weight: hi ? 4 : 1.4, dashArray: '2 4', fillColor: '#9AA5B1', fillOpacity: .25}
     : {color: hi ? '#0C356A' : '#6B4E16', weight: hi ? 4 : .9, fillColor: COLOR(u.a), fillOpacity: hi ? .9 : .75};
   let dPolys = new Map();
-  function dRender(fit = true) {
+  async function dRender(fit = true) {
+    await loadGeom(st.sgg);
     const list = U.filter(u => inSgg(u, st.sgg) && (!st.emd || u.emds.includes(st.emd)));
     dLayer.clearLayers(); dEmdL.clearLayers(); dPolys = new Map();
     list.forEach(u => { if (!u.geometry) return; const ly = L.geoJSON(u.geometry, {style: () => polyStyle(u, u.id === st.sel)}).addTo(dLayer);
@@ -403,7 +418,7 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
     const tot = list.reduce((s, u) => s + u.a, 0), cnt = k => list.filter(u => u.a >= B[k]).length, e = st.emd ? EMD.get(st.emd) : null;
     $('dSum').innerHTML = `<b>${esc(st.emd ? eName(st.emd) : sName(st.sgg))}</b> — 후보 공간 <b>${list.length.toLocaleString('ko-KR')}</b>곳 · 총 면적 <b>${km2(tot)}</b> km² · 10MW 이상 ${cnt('10')} · 20MW 이상 ${cnt('20')} · 50MW 이상 ${cnt('50')}` +
       (list.length ? `<div>면적 상위 후보: ${list.slice(0, 3).map(u => `<a href="#" data-go="${u.id}">${km2(u.a)} km² · ${esc(where(u, 1))}</a>`).join(' · ')}</div>` : '') +
-      `<div class="adv-note">50/20/10MW는 0.045 kW/㎡를 적용해 면적을 환산한 참고 규모이며, 실제 설치 가능 용량·발전량·계통 접속 가능 용량이 아닙니다. 후보 공간이 시군·읍면동 경계를 넘으면 걸친 곳마다 한 번씩 보입니다(지역끼리 더하지 않음). 도형이 없는 후보 공간 ${list.filter(u => !u.geometry).length}곳은 목록에만 있습니다(지적 폴리곤이 없음 — 설치 불가라는 뜻은 아님).</div>`;
+      `<div class="adv-note">50/20/10MW는 0.045 kW/㎡를 적용해 면적을 환산한 참고 규모이며, 실제 설치 가능 용량·발전량·계통 접속 가능 용량이 아닙니다. 후보 공간이 시군·읍면동 경계를 넘으면 걸친 곳마다 한 번씩 보입니다(지역끼리 더하지 않음). 도형이 없는 후보 공간 ${list.filter(u => !u.hg).length}곳은 목록에만 있습니다(지적 폴리곤이 없음 — 설치 불가라는 뜻은 아님).</div>`;
     $('dList').innerHTML = `<div class="adv-note" style="padding:6px 10px">면적 큰 순 · ${list.length}곳 — 누르면 지도에서 강조</div>` + list.map(u =>
       `<div class="it ${u.id === st.sel ? 'sel' : ''}" data-id="${u.id}"><b>${km2(u.a)} km²</b> · ${band(u.a)} · 필지 ${u.n.toLocaleString('ko-KR')}${u.t !== 'default' ? ' <span class="tag w">' + (u.t === 'missing' ? '도형 없음' : '지도 정보 확인 필요') + '</span>' : ''}<div class="adv-note">${esc(u.emds.map(eName).join(' · ') || '읍면동 정보 없음')}</div></div>`).join('');
     $('dList').querySelectorAll('.it').forEach(el => el.onclick = () => dSelect(+el.dataset.id, true));
@@ -470,7 +485,7 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
   function renderQs() {
     $('qCases').innerHTML = '<tr><th>사례</th><th>유형</th><th>후보 공간</th><th>위치</th><th>면적 (참고 규모)</th><th style="text-align:left">고른 규칙</th></tr>' +
       QCASES.map(([id, k, f], i) => { const u = UBY.get(id); return `<tr><td><button type="button" class="btnx" data-qcase="${id}">사례 ${i + 1} 지도에서 보기</button></td><td>${k}</td><td>#${id}</td><td>${esc(where(u, 2))}</td><td>${u.a < 10000 ? Math.round(u.a).toLocaleString('ko-KR') + '㎡' : km2(u.a) + ' km²'} (약 ${fmt(u.mw, 1)} MW)</td><td style="white-space:normal;text-align:left;min-width:220px">${esc(f)} · 구성 필지 ${u.n}개</td></tr>`; }).join('');
-    $('qCases').querySelectorAll('[data-qcase]').forEach(b => b.onclick = () => { const u = UBY.get(+b.dataset.qcase); st.sgg = u.sggs[0]; st.emd = ''; $('dSgg').value = st.sgg; fillEmd(); dRender(); setTimeout(() => dSelect(u.id, true), 120); });
+    $('qCases').querySelectorAll('[data-qcase]').forEach(b => b.onclick = () => { const u = UBY.get(+b.dataset.qcase); st.sgg = u.sggs[0]; st.emd = ''; $('dSgg').value = st.sgg; fillEmd(); dRender().then(() => dSelect(u.id, true)); });
     $('qList').innerHTML =
       qBox(qHead('A1', '위치·경계 현실성 — 이 후보의 위치와 경계를 실제 현황과 비교했을 때 명백히 맞지 않는 부분이 있습니까?') +
         qHint('위성 배경 지도와 근거 레이어를 켜고 보시면 됩니다. 메모에는 위치 / 다르게 보이는 부분 / 판단 근거를 적어 주세요.') +
@@ -617,10 +632,10 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
   function paintWeightTop() { wLayer.clearLayers(); wTop.forEach(id => { const u = UBY.get(id); if (u && u.lat) L.circleMarker([u.lat, u.lon], {radius: 7, color: '#8a5a00', weight: 2, fillColor: '#ffcf5a', fillOpacity: .95}).bindTooltip('가중치 실험 상위 10(실험 결과 — 추천 아님)').addTo(wLayer); }); }
   ['wA', 'wB', 'wC', 'wNorm'].forEach(id => $(id).addEventListener('input', renderWeights));
   document.querySelectorAll('[data-p]').forEach(b => b.onclick = () => { const [a, bb, c] = b.dataset.p.split(','); $('wA').value = a; $('wB').value = bb; $('wC').value = c; renderWeights(); });
-  renderMethod();
+  if (!$('mLegacy').hidden) renderMethod();   // 방법론 실험 화면은 숨김 — 숨긴 동안은 그리지 않는다
 
   // ════════ ③ 사용성 ════════
-  const um = mkMap('uMap'); const uLayer = L.featureGroup().addTo(um);
+  const um = mkMap('uMap'); const uLayer = L.featureGroup().addTo(um); let uPts = null; um.createPane('uPts').style.zIndex = 420;
   const us = {sgg: '', emd: ''};
   $('uQ').addEventListener('input', () => { const q = $('uQ').value.trim().replace(/\s+/g, ''); if (!q) { $('uRes').innerHTML = ''; return; }
     const hits = [...SGG.filter(s => sName(s).replace(/\s/g, '').includes(q)).map(s => ({s, e: '', t: sName(s)})),
@@ -628,28 +643,31 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
     $('uRes').innerHTML = hits.map(h => `<div data-s="${h.s}" data-e="${h.e}">${esc(h.t)}</div>`).join('') || '<div>찾는 지역이 경기도 후보 공간 자료에 없습니다</div>';
     $('uRes').querySelectorAll('[data-s]').forEach(el => el.onclick = () => { us.sgg = el.dataset.s; us.emd = el.dataset.e; $('uQ').value = el.textContent; $('uRes').innerHTML = ''; uRender(); }); });
   $('uGo').onclick = () => { const f = $('uRes').querySelector('[data-s]'); if (f) f.click(); else uRender(); };
-  $('uScn').onchange = () => uRender();
+  $('uScn').onchange = () => { uDrawn = true; uRender(); };
   const ALT = D.alt, AC = D.alt_cols;
   async function uRender() {
     const scn = $('uScn').value;
     $('uWhere').textContent = (us.emd ? eName(us.emd) : us.sgg ? sName(us.sgg) : '경기도 전체') + (us.emd && scn !== 'R2_promo' ? ' — 이 조건의 자료에는 읍면동 구분이 없어 ' + sName(us.sgg) + ' 전체 기준으로 보입니다' : '');
+    const whole = !us.sgg; if (scn === 'R2_promo' && !whole) await loadGeom(us.sgg);
     let items;
-    if (scn === 'R2_promo') items = U.filter(u => inSgg(u, us.sgg) && (!us.emd || u.emds.includes(us.emd))).map(u => ({id: u.id, a: u.a, lat: u.lat, lon: u.lon, lo: u.lo, d: u.d, geom: u.geometry, where: u.emds.map(eName).join(' · ')}));
+    if (scn === 'R2_promo') items = U.filter(u => inSgg(u, us.sgg) && (!us.emd || u.emds.includes(us.emd))).map(u => ({id: u.id, a: u.a, lat: u.lat, lon: u.lon, lo: u.lo, d: u.d, geom: whole ? null : u.geometry, where: u.emds.map(eName).join(' · ')}));
     else { const seen = new Map(); Object.entries(ALT[scn]).forEach(([s, rs]) => { if (us.sgg && s !== us.sgg) return; rs.forEach(r => { const o = Object.fromEntries(AC.map((c, i) => [c, r[i]])); if (!seen.has(o.lab)) seen.set(o.lab, {id: o.lab, a: o.a, lat: o.lat, lon: o.lon, lo: o.lo, d: o.d, geom: null, where: sName(s)}); }); });
       items = [...seen.values()]; }
     items.sort((a, b) => b.a - a.a);
     const c = k => items.filter(x => x.a >= B[k]).length;
     $('uCards').innerHTML = [['50', '약 50MW 규모 후보 공간'], ['20', '약 20MW 규모 후보 공간'], ['10', '약 10MW 규모 후보 공간']].map(([k, t]) => `<div class="card"><div class="s">${t}(이상)</div><div class="v">${c(k)}<small style="font-size:14px"> 곳</small></div><div class="s">면적을 일정한 기준으로 환산한 참고 규모입니다(약 ${fmt(B[k] / 1e6, 2)} km² 이상). 실제 설치 가능 용량·발전량·계통 접속 가능 용량이 아닙니다.</div></div>`).join('');
-    uLayer.clearLayers();
+    uLayer.clearLayers(); if (uPts) { um.removeLayer(uPts); uPts = null; }
+    if (whole) { const pts = items.filter(x => x.lat).reverse(); uPts = new PtLayer(pts, {pane: 'uPts'}).addTo(um);
+      if (pts.length) um.fitBounds(L.latLngBounds(pts.map(x => [x.lat, x.lon])), {padding: [20, 20], maxZoom: 13}); }
     const feats = items.filter(x => x.geom).map(x => ({type: 'Feature', properties: {a: x.a}, geometry: x.geom}));
     if (feats.length) L.geoJSON({type: 'FeatureCollection', features: feats}, {style: f => ({color: '#6B4E16', weight: .8, fillColor: COLOR(f.properties.a), fillOpacity: .8}),
       onEachFeature: (f, ly) => ly.bindTooltip(`${km2(f.properties.a)} km² · ${band(f.properties.a)}`)}).addTo(uLayer);
-    items.forEach(x => { if (!x.geom && x.lat) L.circleMarker([x.lat, x.lon], {radius: x.a >= B['10'] ? 6 : 3, color: '#6B4E16', weight: 1, fillColor: COLOR(x.a), fillOpacity: .9}).bindTooltip(`${km2(x.a)} km² · ${band(x.a)}`).addTo(uLayer); });
-    if (uLayer.getLayers().length) um.fitBounds(uLayer.getBounds(), {padding: [20, 20], maxZoom: 13});
-    $('uList').innerHTML = `<div class="adv-note" style="padding:6px 10px">큰 후보 공간부터 · ${items.length}곳${scn !== 'R2_promo' ? ' · 이 조건은 위치를 점으로 표시' : ''}</div>` + items.slice(0, 200).map(x => `<div class="it" data-id="${x.id}" data-lat="${x.lat}" data-lon="${x.lon}"><b>${band(x.a)}</b> · ${km2(x.a)} km²<div class="adv-note">${esc(x.where)} · 계통 여유 참고값 ${x.lo == null ? '알 수 없음' : fmt(x.lo) + ' MW'} · 산업단지까지 ${x.d == null ? '알 수 없음' : fmt(x.d, 1) + ' km'}</div></div>`).join('');
+    if (!whole) items.forEach(x => { if (!x.geom && x.lat) L.circleMarker([x.lat, x.lon], {radius: x.a >= B['10'] ? 6 : 3, color: '#6B4E16', weight: 1, fillColor: COLOR(x.a), fillOpacity: .9}).bindTooltip(`${km2(x.a)} km² · ${band(x.a)}`).addTo(uLayer); });
+    if (!whole && uLayer.getLayers().length) um.fitBounds(uLayer.getBounds(), {padding: [20, 20], maxZoom: 13});
+    $('uList').innerHTML = `<div class="adv-note" style="padding:6px 10px">큰 후보 공간부터 · ${items.length.toLocaleString('ko-KR')}곳${whole ? ' · 경기도 전체는 위치를 점으로 표시(시군·읍면동을 고르면 도형)' : scn !== 'R2_promo' ? ' · 이 조건은 위치를 점으로 표시' : ''}</div>` + items.slice(0, 200).map(x => `<div class="it" data-id="${x.id}" data-lat="${x.lat}" data-lon="${x.lon}"><b>${band(x.a)}</b> · ${km2(x.a)} km²<div class="adv-note">${esc(x.where)} · 계통 여유 참고값 ${x.lo == null ? '알 수 없음' : fmt(x.lo) + ' MW'} · 산업단지까지 ${x.d == null ? '알 수 없음' : fmt(x.d, 1) + ' km'}</div></div>`).join('');
     $('uList').querySelectorAll('.it').forEach(el => el.onclick = () => { if (el.dataset.lat !== 'null') um.setView([+el.dataset.lat, +el.dataset.lon], 15);
       const u = UBY.get(+el.dataset.id); if (u && scn === 'R2_promo') { $('uDet').innerHTML = `<b>${band(u.a)}</b> · ${km2(u.a)} km² · ${esc(where(u, 3))}<br>왜 후보인가: 21m 이내로 이어진 법인·국공유 농지 ${u.n}필지가 판정 조건을 통과해 하나의 후보 공간이 됐습니다(특별법 시행 후 농업진흥구역에 설치할 수 있게 되는 경우).<br>계통 여유 참고값 ${u.lo == null ? '알 수 없음' : fmt(u.lo) + '–' + fmt(u.hi) + ' MW'}(실제 접속 가능 용량 아님) · 가장 가까운 산업단지까지 ${u.d == null ? '알 수 없음' : fmt(u.d, 1) + ' km'} <button class="btnx" data-open="${u.id}">자세히 보기</button>`;
-        $('uDet').querySelector('[data-open]').onclick = () => { st.sgg = u.sggs[0]; st.emd = ''; $('dSgg').value = st.sgg; fillEmd(); document.querySelector('#tabs [data-t=data]').click(); dRender(); setTimeout(() => dSelect(u.id, true), 150); }; } });
+        $('uDet').querySelector('[data-open]').onclick = () => { st.sgg = u.sggs[0]; st.emd = ''; $('dSgg').value = st.sgg; fillEmd(); document.querySelector('#tabs [data-t=data]').click(); dRender().then(() => dSelect(u.id, true)); }; } });
   }
   $('uPnuGo').onclick = async () => { const out = $('uPnuOut'); const q = $('uPnu').value.trim(); if (!q) return;
     const done = await V55.pnuSearchBox({value: q}, out, {nameOf: sName, minM2: 66667, onGo: s => { us.sgg = s; us.emd = ''; uRender(); }});
@@ -663,13 +681,13 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
   let order = String((fbLoad().glance || {}).verdict || '').split(' → ').filter(Boolean);
   const gl = () => { $('uGlance').innerHTML = GL.map(g => `<button class="${order.includes(g) ? 'on' : ''}">${g}</button>`).join(''); $('uGlanceOut').textContent = order.length ? '기록한 순서: ' + order.join(' → ') : '기록 없음';
     $('uGlance').querySelectorAll('button').forEach(b => b.onclick = () => { order = order.includes(b.textContent) ? [] : [...order, b.textContent]; fbSave('glance', {order, verdict: order.join(' → ')}); gl(); }); };
-  gl(); uRender();
+  gl();
 
   // ════════ 사례 ════════
   $('cList').innerHTML = D.cases.map((c, i) => { const u = UBY.get(c.id); if (!u) return ''; return `<div class="adv-box"><b>CASE ${String(i + 1).padStart(2, '0')}</b> — ${esc(c.rule)}
     <div>${esc(where(u, 3))} · ${km2(u.a)} km² · ${band(u.a)} · 필지 ${u.n} · 계통 참고값 ${u.lo == null ? '알 수 없음' : fmt(u.lo) + (u.hi != null ? '–' + fmt(u.hi) : '') + ' MW'} · 산업단지 ${fmt(u.d, 2)} km${u.t !== 'default' ? ' · <span class="tag w">' + esc(u.ql) + '</span>' : ''}</div>
     <div style="margin:6px 0"><button class="btnx" data-case="${u.id}">① 탭 지도에서 열기</button></div>${fbWidget('case:' + (i + 1), '이 사례에 대한 의견')}</div>`; }).join('');
-  document.querySelectorAll('[data-case]').forEach(b => b.onclick = () => { const u = UBY.get(+b.dataset.case); st.sgg = u.sggs[0]; st.emd = ''; $('dSgg').value = st.sgg; fillEmd(); document.querySelector('#tabs [data-t=data]').click(); dRender(); setTimeout(() => dSelect(u.id, true), 120); });
+  document.querySelectorAll('[data-case]').forEach(b => b.onclick = () => { const u = UBY.get(+b.dataset.case); st.sgg = u.sggs[0]; st.emd = ''; $('dSgg').value = st.sgg; fillEmd(); document.querySelector('#tabs [data-t=data]').click(); dRender().then(() => dSelect(u.id, true)); });
 
   // ════════ 수학 요약 ════════
   const S = D.summary;
