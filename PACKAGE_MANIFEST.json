@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 95591,
-   "sha256": "80e943514bb0a33eb0f27d62023d87f09d5a369ec186a0ab44f2e9a23b3df9f2"
+   "bytes": 95984,
+   "sha256": "552c779d6642489a044ac7cc852327d9f85b007cf08edd11548be815aa4b79f8"
   },
   "assets/region.js": {
    "bytes": 5718,
