@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 64840,
-   "sha256": "df4a3a3de7df04856a4ad4c3293ea2b35a2879783e7fca85ce5806f529c47acf"
+   "bytes": 73342,
+   "sha256": "943a453d97dd5de42b869fa71a99302bb855ca39b494c822180363e134778891"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -429,13 +429,13 @@
    "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 3846,
-   "sha256": "ed5d1046ace08d0592597b9f64a4c1136cc841a68e98d995921d869f7dc3a3ea"
+   "bytes": 6084,
+   "sha256": "4ff0c1595a7ece0ecd7faa96a5399f8fb21bd693f962bfc540671fdeb3e87676"
   },
   "style.css": {
    "bytes": 42033,
    "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
  },
- "revision": "r2 2026-09-28: data_v4/units_index.json 추가 (v55.js pnuCard 가 참조하는 기존 발행 자산 — r1 패키지 누락분)"
+ "revision": "r3 2026-09-28: 자문 문항 개편(홍상현 님 검토 의견 반영 — A 데이터 확인 · B 방법 검토 · C 활용 가능성) · advisory.html·ADVISORY_README.md 문구만 변경, 데이터 무변경"
 }
