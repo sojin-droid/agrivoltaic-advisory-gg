@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 84436,
-   "sha256": "efa379de60d884a84a42f1f5c20f2ca05d24a822cc457ae3eb9dd303b60c8ea3"
+   "bytes": 84450,
+   "sha256": "9dd22e53bffb06745165ab458947a804323a049acf190189f463977e0065130f"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -437,5 +437,5 @@
    "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
  },
- "revision": "r7 2026-09-28: B2 항목명(농업진흥지역 경계 자료) · D 안내(자료·산출 결과) · 검토 안내에 방법론 별도 자문 문장 분리 · 문구만 변경, 데이터 무변경"
+ "revision": "r8 2026-09-28: 시나리오 표기를 GGI 검토의견 기준으로 정리 — '특별법 시행 전/후' · '농업진흥구역(·농업보호구역)에도 설치 가능'('(가정)' 표기 제거) · 폰 폭 표 word-break 규칙 · 문구·CSS만, 데이터 무변경"
 }
