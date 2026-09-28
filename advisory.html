@@ -370,6 +370,9 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
   const LY = {parcels: L.layerGroup(), emd: L.layerGroup().addTo(dm), ind: L.layerGroup(), grid: L.layerGroup(), ex: L.layerGroup()};
   const OWN_C = ['#1f77b4', '#17becf', '#9467bd', '#d62728'];
   let _parSgg = null, _ind = null, _ex = null, _eb = null;
+  const EX_SRC = {std_15107742: '공공데이터포털 전국태양광발전소 전기사업허가정보', 'sido_전북2026_15138599': '전라북도 태양광 발전사업 허가 현황(2026)'};
+  const exTip = p => { const m = (_ex && _ex.meta) || {}, where = String((m.emd_names || {})[p[7]] || '').replace(/^경기도 /, '');
+    return `<b>기존 ${p[3] === 'y' ? '영농형 태양광' : '일반 태양광'} 시설</b>${where ? ' · ' + esc(where) : ''}<br>상태: ${esc((m.status_codes || {})[p[4]] || p[4])}${p[2] ? ` · 설비용량 ${fmt(p[2], 0)} kW` : ''}<br><span style="font-size:11px">출처: ${esc(EX_SRC[p[5]] || p[5])}</span>`; };
   // 읍면동 경계는 신 코드(개편 후)라 시군 코드 접두로 거르면 빠지는 곳이 있다(화성 구 신설 등) — 지금 보이는 후보 공간 범위와 겹치는 경계를 쓴다
   // 표시용 읍면동 경계: grid_emd 는 전국 채색용(150 m 단순화)이라 확대하면 이웃 경계가 어긋난다 — 같은 원천을 경계 공유 유지(8 m)로 만든 자문 전용 경계를 쓴다(없으면 기존 도형)
   let _pb = null;
@@ -395,7 +398,7 @@ input[type=range]{width:180px;max-width:100%;accent-color:var(--adv-navy)}
       LY.ind.clearLayers(); (_ind ? _ind.features : []).forEach(f => { const g = L.geoJSON(f, {pane: 'lyrInd', style: {color: '#0C356A', weight: 1.5, fillColor: '#0C356A', fillOpacity: .15}}); if (bb.intersects(g.getBounds())) g.bindTooltip(`산업단지 · ${esc(f.properties.n)} (${esc(f.properties.t)})`).addTo(LY.ind); });
       LY.ind.addTo(dm); } else dm.removeLayer(LY.ind);
     if (on('ex')) { if (!_ex) _ex = await V55.gz('data_v4/existing_pv_v4.json.gz'); LY.ex.clearLayers();
-      (_ex ? _ex.pts : []).filter(p => String(p[6]).startsWith(st.sgg)).forEach(p => L.circleMarker([p[1], p[0]], {pane: 'lyrEx', radius: 4.5, color: '#5A3E00', weight: 1.2, fillColor: p[4] !== 'op' ? '#B9B9B9' : p[3] === 'y' ? '#3CCB6E' : '#FFC21A', fillOpacity: .95}).bindTooltip(`기존 ${p[3] === 'y' ? '영농형 태양광' : '태양광'} 시설 · ${((_ex.meta || {}).status_codes || {})[p[4]] || p[4]} · 확보 자료의 일부이며 전수 아님`).addTo(LY.ex));
+      (_ex ? _ex.pts : []).filter(p => String(p[6]).startsWith(st.sgg)).forEach(p => L.circleMarker([p[1], p[0]], {pane: 'lyrEx', radius: 4.5, color: '#5A3E00', weight: 1.2, fillColor: p[4] !== 'op' ? '#B9B9B9' : p[3] === 'y' ? '#3CCB6E' : '#FFC21A', fillOpacity: .95}).bindTooltip(exTip(p)).addTo(LY.ex));
       LY.ex.addTo(dm); } else dm.removeLayer(LY.ex);
     const uOn = on('units'); uOn ? dLayer.addTo(dm) : dm.removeLayer(dLayer);
   }
