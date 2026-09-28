@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 73342,
-   "sha256": "943a453d97dd5de42b869fa71a99302bb855ca39b494c822180363e134778891"
+   "bytes": 75927,
+   "sha256": "ff6680e44f1e2797dfd6997c12cada57e148948410f432d4b4337701b4284d13"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -429,13 +429,13 @@
    "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 6084,
-   "sha256": "4ff0c1595a7ece0ecd7faa96a5399f8fb21bd693f962bfc540671fdeb3e87676"
+   "bytes": 7806,
+   "sha256": "dbf61f8a5330abb08eafafcd432b1963618f20f1530800cc1979eb9fd4f56dad"
   },
   "style.css": {
    "bytes": 42033,
    "sha256": "9217d920a96408c9dbe41ac70de1ec119d1e708244c575d30bb523f3539a3cf8"
   }
  },
- "revision": "r3 2026-09-28: 자문 문항 개편(홍상현 님 검토 의견 반영 — A 데이터 확인 · B 방법 검토 · C 활용 가능성) · advisory.html·ADVISORY_README.md 문구만 변경, 데이터 무변경"
+ "revision": "r4 2026-09-28: 자문 문항 재개편(0 배경 · A1–A8 · B0–B7 · C1–C7 · D 종합) · advisory.html·ADVISORY_README.md 문구만 변경, 데이터 무변경"
 }
