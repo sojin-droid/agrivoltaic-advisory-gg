@@ -5,8 +5,8 @@
  "source_state": "uncommitted working tree 2026-09-27",
  "files": {
   "advisory.html": {
-   "bytes": 96021,
-   "sha256": "f79d0f8b5fff5ae29c4bb95d0af011f3da846fe465143479baa5ee07add3c658"
+   "bytes": 97170,
+   "sha256": "d6a0f8ccad265371af25c7b06a0666b3519907478180baf9a834367d20ee74d5"
   },
   "assets/region.js": {
    "bytes": 5718,
@@ -993,5 +993,5 @@
    "sha256": "a1564f2bfdff7a9833c4156815254ad3b755a5c9321cf37a098c76baa7931451"
   }
  },
- "revision": "r14 2026-10-01: 시행 전 시나리오 라벨에 조건 병기 \"특별법 시행 전(농업진흥지역에 설치 불가)\" — 사이트(V5)와 통일 · 선택지·지번 카드 문구만, 데이터 무변경"
+ "revision": "r15 2026-10-01: 계통 \"알 수 없음\" 읍면동 채색 회색→자홍+점선(사이트 finder 와 통일) · 툴팁·레이어 라벨 문구 · 데이터 무변경"
 }
