@@ -339,7 +339,7 @@ window.V55 = (() => {
       return `<div class="row"><div class="s">${label}</div><div><span class="v55-cls" style="background:${C[2]}">${C[0]}</span>${C[1]}${c.lab != null ? `<div class="v55-hint">후보 공간 #${c.lab} · ${km2(c.a, 2)} km² ≈ ${mw(c.a)} MW · 필지 ${n(c.n)} · 규모 기준 ${km2(minM2, 3)} km²(${mw(minM2)} MW)${noGeom}</div>` : ''}</div></div>`; };
     const c2 = pnu.classify(data, pnuStr, 'R2_promo', minM2);
     el.innerHTML = `<div class="v55-pnu"><div class="h">PNU ${pnuStr} · 시군 ${nameOf(sgg)}</div><div class="nm">${nm}</div>${brNote}
-      ${rowHTML('특별법 시행 전', 'R0_current')}${rowHTML('특별법 시행 후<br><small>(농업진흥구역 개방 가정)</small>', 'R2_promo')}${rowHTML('특별법 시행 후<br><small>(농업진흥지역 전체 개방 가정)</small>', 'R3_zone_all')}
+      ${rowHTML('특별법 시행 전<br><small>(농업진흥지역에 설치 불가)</small>', 'R0_current')}${rowHTML('특별법 시행 후<br><small>(농업진흥구역 개방 가정)</small>', 'R2_promo')}${rowHTML('특별법 시행 후<br><small>(농업진흥지역 전체 개방 가정)</small>', 'R3_zone_all')}
       <div class="v55-hint" style="margin-top:8px">③은 설치 불가 판정이 아님 — 지목·소유(개인 소유 농지는 분석 기준 밖)·제외조건 중 어느 것인지 이 화면은 구분하지 않음. 필지 단위 클릭 대신 검색으로만 확인함.</div>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn btn-primary" id="pnuGo">이 필지의 시군(${nameOf(sgg)})으로 분석하기 · 농업진흥구역 개방 가정</button></div></div>`;
     el.querySelector('#pnuGo').onclick = () => onGo && onGo(sgg, c2.lab != null ? c2.lab : null);
