@@ -1,24 +1,24 @@
 {
  "package": "Gyeonggi advisory static package",
- "source_branch": "v5.5-ggi-review",
- "source_head": "2b4dac0",
- "source_state": "uncommitted working tree 2026-09-27",
+ "source_branch": "main",
+ "source_head": "13b4ea4",
+ "source_state": "synced 2026-10-07T19:18",
  "files": {
   "advisory.html": {
-   "bytes": 97170,
-   "sha256": "d6a0f8ccad265371af25c7b06a0666b3519907478180baf9a834367d20ee74d5"
+   "bytes": 97684,
+   "sha256": "243b89882fa930134ee0c678001aaa1f8d232511cdb484a831c28c380e04e385"
   },
   "assets/region.js": {
    "bytes": 5718,
    "sha256": "55fb409a79d49fcfc0f172d3562476242c75bde6f5f7dd9f46aa06455b615f50"
   },
   "assets/v4.js": {
-   "bytes": 18525,
-   "sha256": "36298043301ceddbea189a000e1e77f92d19b622ba49daa3354ff1e1297e586a"
+   "bytes": 16637,
+   "sha256": "957d46d24c244367420b3d50ed3578ada0d0c45d2daa5ca9085567a8fae3dfae"
   },
   "assets/v55.js": {
-   "bytes": 43313,
-   "sha256": "59505100ba654f0d93f8e2ff30f1690d39f047da60c64bc05361ad8097faf49e"
+   "bytes": 45978,
+   "sha256": "da75946eebcbe036de80cb538effd957d4fa178ae5a77a91b9b79f20802fef0d"
   },
   "assets/vendor/leaflet/images/layers-2x.png": {
    "bytes": 1259,
@@ -53,8 +53,8 @@
    "sha256": "153ba84c03eb48db5c76325451cd9fd5256d6162a8f767b5fdf38a4f97724610"
   },
   "data_v4/advisory/gg_v1.json.gz": {
-   "bytes": 3147202,
-   "sha256": "3bce7ae65eb3ff84caaaf91dbc5df333d1caa7e3836de37fa46fea1e084e75d5"
+   "bytes": 3148184,
+   "sha256": "7430d984ea3f9cbeef90be6fa9963e521b46a2049fabef31bbae8f3f6c87d2d2"
   },
   "data_v4/bjd_v4.json.gz": {
    "bytes": 181534,
@@ -429,24 +429,24 @@
    "sha256": "b6481d3281af074fd727fb12bf06e2a2a1e1cf20d92a129cc7ced3951bf22374"
   },
   "data_v4/units_index.json": {
-   "bytes": 20969,
-   "sha256": "7f2cdcf8966e6646a3536ab18430825392e22a5adc12cf229e265e554c2bce20"
+   "bytes": 720473,
+   "sha256": "31e32a71807859972eac33d96d5642927446b91b497ee4c92f3bbaa00946e0d7"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 9072,
-   "sha256": "ead8ea63d35fd471795cd8b89db2c1edab4cede59e56dfbf5f2d8dfe2b70c2f1"
+   "bytes": 9170,
+   "sha256": "115a549dba9880489ed81583f0b7a2863139b1644b1b5e1c35d9e6428a624b23"
   },
   "style.css": {
-   "bytes": 42216,
-   "sha256": "cbba6e9d2885b453a6c49c9015b916b902b8d537b91b72f9d581cb3e3a05362e"
+   "bytes": 43321,
+   "sha256": "16d90749bb9cdecca07abc95e131a95e3441db8f924a9277ddc70c9aa500e46b"
   },
   "assets/vendor/pretendard/LICENSE.txt": {
-   "bytes": 4419,
-   "sha256": "b04538c9abec39a3db75108cf0af0fd9c77032fe8aa2cf38345b4d250e98e38e"
+   "bytes": 4513,
+   "sha256": "4a8e3f92a51de4ca7b18ac2f462abf5fa22c76ec9a2685dda6a0ed95c8715479"
   },
   "assets/vendor/pretendard/pretendardvariable-dynamic-subset.css": {
-   "bytes": 55760,
-   "sha256": "2973bcae80262dcb630cfb793fbf6af29bd986c769ee54953fb3e5b3e32323ca"
+   "bytes": 56687,
+   "sha256": "b6b4c861224f36d6a0e7ca75c5373fe9e56219e41cf801388dac21750b4ecdee"
   },
   "assets/vendor/pretendard/woff2-dynamic-subset/PretendardVariable.subset.0.woff2": {
    "bytes": 34568,
@@ -818,180 +818,180 @@
   },
   "data_v4/advisory/geom/41111.json.gz": {
    "bytes": 8363,
-   "sha256": "ce6e72f3b3461aa16c2b1540a6a0bf8d42668426c00e6d8ca1fabc9a7eaabf35"
+   "sha256": "6317a3aad8a11af4f2c48e3b4d489db86480e0bca768776420808ab98bd01626"
   },
   "data_v4/advisory/geom/41113.json.gz": {
    "bytes": 19714,
-   "sha256": "ada4fcb53a5bb0d8eec5fa4c0f29d2b3a83efb950c7cd3adbedae858cf092ab6"
+   "sha256": "e43fc3d8aeb373296dc78adba481dab9a5fa5fab5563838269f045d946b727ad"
   },
   "data_v4/advisory/geom/41115.json.gz": {
    "bytes": 4029,
-   "sha256": "27d828a7a90231373fcfde80b814406a320378f16d6f8e79a4a8a124eeaecd1a"
+   "sha256": "d69ab3fb5e97af5e797f5de215a78f28b75192aeb8119d8b49ca9e3acc4cf934"
   },
   "data_v4/advisory/geom/41117.json.gz": {
    "bytes": 8200,
-   "sha256": "96ff94d6c5c40d87dfa4eca1faa29d3aed741b55826f8cc1c6c2192c57eb5222"
+   "sha256": "9f7768e0ceeb488cef36336589009541e8317037595794fbabeba9effa2bbd2b"
   },
   "data_v4/advisory/geom/41131.json.gz": {
    "bytes": 11953,
-   "sha256": "c1f916d0009a16e1fd635d74018dd6c84e728d3f202378a10ce9b4c9fb103f37"
+   "sha256": "f8a7caf33f859f41c36a66665da88b20a0c7cd3411b47d109310fa4c4e45e55f"
   },
   "data_v4/advisory/geom/41133.json.gz": {
    "bytes": 1395,
-   "sha256": "8a6f5bcafde229fea416e10fe0c26a61837a4d6c37d75ad345954ee419355f53"
+   "sha256": "aa8358cebf87f268fc3699b73eb295522a04c67d7d7e2e7c830f31fbd9910afc"
   },
   "data_v4/advisory/geom/41135.json.gz": {
    "bytes": 3719,
-   "sha256": "6c7ba7cbd0d9ac31000252ee141ca15783c2cd0edd8e300774102bc72ab99194"
+   "sha256": "0922d70d8f42a33c6ee8eb721e1dced6391e966b3975f9bb310f448424e1d0a3"
   },
   "data_v4/advisory/geom/41150.json.gz": {
    "bytes": 15972,
-   "sha256": "d30bb2c1bd78bea3ec2d81ec644379e795881d585e43f606c9d0212bbce559aa"
+   "sha256": "18e4a752c7d2d3cfd8e45f9569f45839791dc3aa7d2007510497f0b1eab8e8d0"
   },
   "data_v4/advisory/geom/41171.json.gz": {
    "bytes": 5339,
-   "sha256": "3f9d29dadb3c0aca920d9e59f2255689791864c932d13e43cc3333b346165776"
+   "sha256": "af18a662dfcc999f2c3336ee40e92c79c145222395232cc2436f091623ccd59c"
   },
   "data_v4/advisory/geom/41173.json.gz": {
    "bytes": 3862,
-   "sha256": "e004970563a1e9464359fdff61cc2f61dc6e07d2ebe1cfc2067711c26ecdc8ed"
+   "sha256": "943a20f9cfa1692c44d2c37837dc8da49c40454ca27c80086209d361fd8f7fd6"
   },
   "data_v4/advisory/geom/41192.json.gz": {
    "bytes": 2754,
-   "sha256": "3db5d230fa334936bceebe80e974335f74a199e505729336e5e564179d191386"
+   "sha256": "79ce6b2de7a6734cad70ce5a5bd97f92f354fd134c2dc3d38f8e53db3cc001cc"
   },
   "data_v4/advisory/geom/41194.json.gz": {
    "bytes": 1868,
-   "sha256": "0dde1d1289e410c6bb47c14687d9f142a46fc4c4e5d8b7eed5d1acfcfd60226b"
+   "sha256": "0ee8c850cc764a7edd7099bfd03ededc54e40cfb0d512f7f6a481488f815469c"
   },
   "data_v4/advisory/geom/41196.json.gz": {
    "bytes": 6005,
-   "sha256": "9e21ccc023ca1f48c9aaa9585f115dc603a1bf1784b279071bb7c74b31c36b90"
+   "sha256": "50897ea9dd9dda252c36a8aa2f545ad1d04ca675f1157405c227eed6f6918a91"
   },
   "data_v4/advisory/geom/41210.json.gz": {
    "bytes": 8774,
-   "sha256": "3ad2fb507349ab0c0656081699976430b683abf9e36409890340ac40853ba675"
+   "sha256": "611acdb259df73b69c577a64016c244020b6f98d0a41272e96076844ab8ab356"
   },
   "data_v4/advisory/geom/41220.json.gz": {
    "bytes": 368057,
-   "sha256": "64035c8663c1a275c95d9b735b3a2752b91f07084645880163329e9837352026"
+   "sha256": "03ffc01b2579ce05a7bc183c0b4f12afb8a66472d53e75ab33a89c67c8c86e77"
   },
   "data_v4/advisory/geom/41250.json.gz": {
    "bytes": 29754,
-   "sha256": "e6f0221bf8f5102b6e7ee66ecce752228d7ae297c1812544ec8ad55352be308d"
+   "sha256": "f9ea2e56fb578196cea53e9d70372d279761380fcd0f4e6dabe9e32ad1d9daa8"
   },
   "data_v4/advisory/geom/41271.json.gz": {
    "bytes": 13742,
-   "sha256": "910450856550862ece2e0a083a5c1031fdef3837d584851395126762e4e5009e"
+   "sha256": "0f2be583e5b3b8497c0dcecfc6f70e707eac4347a6c8707ac6ea37fbcf083523"
   },
   "data_v4/advisory/geom/41273.json.gz": {
    "bytes": 23126,
-   "sha256": "77000be4b3b3b78d8651259f7a09a9281175bf4adda3f4b926300a3791a4f20d"
+   "sha256": "d13b6b185b824846b13e07236d82de89be3be3978638fa1750b488b3a9c17292"
   },
   "data_v4/advisory/geom/41281.json.gz": {
    "bytes": 33827,
-   "sha256": "e367c81fb670c43131e73c012355379fc34a10f445256980921bf421b1674081"
+   "sha256": "377679862ad2619b0c3cd49631de7258351a08277072edf714dc08767c41c17f"
   },
   "data_v4/advisory/geom/41285.json.gz": {
    "bytes": 17955,
-   "sha256": "ff38be8589c7b4bd051e74039ad6cc312fbb8b75aee539ba06df2adab5726637"
+   "sha256": "09c6a50784316eec9d85d0a87c573bfe26a3a0ddbe35efbbb65d90b3d7cf37dd"
   },
   "data_v4/advisory/geom/41287.json.gz": {
    "bytes": 17746,
-   "sha256": "e4e53fe63587aed23e52d566258d9d55d1e4122df7bdfc9abd6b3a16643249a8"
+   "sha256": "57fc0e04e6963b163124a47666ab606d026ce74b49b083910f3c940684b30509"
   },
   "data_v4/advisory/geom/41290.json.gz": {
    "bytes": 7284,
-   "sha256": "40a5c83f20cc9481ab3853b8092fe44a639b6afdbc4ac0ddca313cae03e5729a"
+   "sha256": "e6759116d4d1244c99dcea55c49f7e81dc64abf3ebf8465a83afc644936fde4e"
   },
   "data_v4/advisory/geom/41310.json.gz": {
    "bytes": 7454,
-   "sha256": "87c52519a3e8312cc4dd4a50c219193336e87c05fae2d158be5b65d9e7f707b8"
+   "sha256": "f721ceaf0486c7cc640b0c430824a3dfd793faf5eb02f86f8495062e797f4a46"
   },
   "data_v4/advisory/geom/41360.json.gz": {
    "bytes": 150180,
-   "sha256": "0ea11d7311c2e21f075bfb47c735c64a63ea58d95b93eb5c03efb56631923c78"
+   "sha256": "50ee2547adb6342500a5f55005a50ec3595317589358538327fd5dde077d4653"
   },
   "data_v4/advisory/geom/41370.json.gz": {
    "bytes": 38638,
-   "sha256": "16990424a175bf95578998575b21bbccc81d146326210c2ced68b5943a13ca97"
+   "sha256": "2af658f565212e6b9ce989a91d663a64ae93a484be99fe20a87cb7d8601e837c"
   },
   "data_v4/advisory/geom/41390.json.gz": {
    "bytes": 18468,
-   "sha256": "74b25d85da06f394330b5b71c8711e69f8bbd35afc9ad11aa24694edca2fb8c5"
+   "sha256": "d0a03c027a22f2008c52b438caa2cce117923406833fc2b3919ac3653812d757"
   },
   "data_v4/advisory/geom/41410.json.gz": {
    "bytes": 4031,
-   "sha256": "042795f335684b90b1ceaeaac1849bb5b04a4956712065bd11c28ce75b796f30"
+   "sha256": "ba53ed13a0457e577d60a8b2a7bdedf270599e622f6876ff455ec989d45e63f9"
   },
   "data_v4/advisory/geom/41430.json.gz": {
    "bytes": 7819,
-   "sha256": "18d8cefcb1f08353ab0b8b77921b5cf89ebc9bc49c4514457a4c89075329b0ad"
+   "sha256": "3e5c750888a258f242b17acc02225cb9de06674462ef1242f4e80c567294b3a8"
   },
   "data_v4/advisory/geom/41450.json.gz": {
    "bytes": 9486,
-   "sha256": "5f5e291e3641a762d09a37886ff71f42a7efa97c04c78f19da84fd7fd9b257ef"
+   "sha256": "159da1b3bf6d0110b0b031683fa9c717f31c54299fa22cd4225ada1c9113bc55"
   },
   "data_v4/advisory/geom/41461.json.gz": {
    "bytes": 233092,
-   "sha256": "132b8446c8a59ab30cc3980a0a5e3a47c1c55b6163e2bd1c204fb89204f3ecaf"
+   "sha256": "3d00c028da8b8b3a1defa69b425fb7544cb8b649f243c6f49bfde40592560872"
   },
   "data_v4/advisory/geom/41463.json.gz": {
    "bytes": 49836,
-   "sha256": "5985e1f2aa378437f7de471f7ed2f363d1df32cf1fff9cc7f863cdd185acdf0f"
+   "sha256": "939767b6c816e1ece4d54d265c860763d654635710b3c593fbfdcdab1a729b34"
   },
   "data_v4/advisory/geom/41465.json.gz": {
    "bytes": 14812,
-   "sha256": "b072079bca7228ea07d340bc1fff157b6b2b76015510c7e31faf72bfb1baebef"
+   "sha256": "9aa780e9fe2f21c4db73512639773b934c76e29a238cb8a3ba5fa64f90b1536c"
   },
   "data_v4/advisory/geom/41480.json.gz": {
    "bytes": 181015,
-   "sha256": "0d0b4e90778e63379f6d6e7bfa70603cea79708380d5739df8e97a2483e54e32"
+   "sha256": "2819756a17b9ab6d2679272f7f2b59f920c43887abdc43f80a7a3b736d27e9d8"
   },
   "data_v4/advisory/geom/41500.json.gz": {
    "bytes": 339474,
-   "sha256": "2458677413b2dbc24cc693cabf6e2785b9e4e97e08539080dfcba44a5bd43cab"
+   "sha256": "f84e2c53219ef8bff095093ef2761845b89e61b6baae744d842214dc8a455420"
   },
   "data_v4/advisory/geom/41550.json.gz": {
    "bytes": 301236,
-   "sha256": "d0e4a250fcc3b1e72e7fcb4ba0772455e6157c1cc9acc509d2e2971e52f56a3e"
+   "sha256": "f4be6c28ccd1b86661883b34b22d3e27634b52d2d05e25e2c4e223e7541e115d"
   },
   "data_v4/advisory/geom/41570.json.gz": {
    "bytes": 62974,
-   "sha256": "19b9c263b0f33cf8e9f7708f162590dbf987024e2e7a621163cd8a57b14e51b4"
+   "sha256": "e1ec5359fceaa6af0a41e657267862b275c819281d884a90433b6deca22b66e0"
   },
   "data_v4/advisory/geom/41590.json.gz": {
    "bytes": 395851,
-   "sha256": "a4f07dbe7902b78c6b8b7c5e8696d6559f9a0dcc295172b2e4a18689e488704d"
+   "sha256": "4a7e45a8ee26f8ecdf107e01edcfb015def886817653495c5031d870b1b04315"
   },
   "data_v4/advisory/geom/41610.json.gz": {
    "bytes": 155415,
-   "sha256": "c1018244855807b49bc5ce0a740d1044fd67ec90b320964fa8cd2de9e7f3810e"
+   "sha256": "2a2b46292085b86f6c828799c94c646c9c5915ac9d8c3db32bc452318a80fc80"
   },
   "data_v4/advisory/geom/41630.json.gz": {
    "bytes": 137030,
-   "sha256": "a772d778062588fd60382fe846793b253cb05750a072761c8ec2b00a91bd470d"
+   "sha256": "fed7d81517492292a66dc2b148f6c361d0a1018a668bc1b93c6b6bb4498da20c"
   },
   "data_v4/advisory/geom/41650.json.gz": {
    "bytes": 315969,
-   "sha256": "5f4f41647c4352f73a5dc305d0ae1e0e8669196bc8a0338ecf5061db886dbd9b"
+   "sha256": "53c78f3da1a8712180dd9f771ce11f1e781e14f6e2f57be5545d0c847e49f10d"
   },
   "data_v4/advisory/geom/41670.json.gz": {
    "bytes": 275061,
-   "sha256": "799a9a1971a1914056e52ea05d32ab289b2016ee1e91a3a28d64cc3efbbddcce"
+   "sha256": "9d5cf7ee7ab866c65711dd982f69cd91ce25680ea3fc9e66170f9821f5854c9a"
   },
   "data_v4/advisory/geom/41800.json.gz": {
    "bytes": 105896,
-   "sha256": "9cae24221c081ba94d9d031e8c55d20155c42ea30d733e13474f0f6663cdd038"
+   "sha256": "d46593dc7f419dd48ed13630c10d600a4ec95d3e0132eb9246097ccd2ee0c242"
   },
   "data_v4/advisory/geom/41820.json.gz": {
    "bytes": 172042,
-   "sha256": "360e37ed492c05ddc2f2f00d8c809efbef5e8aaadbaa86416a1795a3daf98f46"
+   "sha256": "8cefee69861999dae896460f207f7d7bc310ffec5b167badcad446b6c080b8a0"
   },
   "data_v4/advisory/geom/41830.json.gz": {
    "bytes": 198441,
-   "sha256": "a1564f2bfdff7a9833c4156815254ad3b755a5c9321cf37a098c76baa7931451"
+   "sha256": "7b445483ed8fd196909a56ce4dffe6dcc73153ddeeebefc1e5d1ed693064652a"
   }
  },
- "revision": "r15 2026-10-01: 계통 \"알 수 없음\" 읍면동 채색 회색→자홍+점선(사이트 finder 와 통일) · 툴팁·레이어 라벨 문구 · 데이터 무변경"
+ "revision": "r16 2026-10-07: 규모 눈금 1MW·3MW 추가(범례·요약·규모 카드·C4) · 자산 재export(표시 규모 22,222㎡ 선택지) · 1,000m 관련 서술 삭제 · 인수인계 §11 현행화"
 }
