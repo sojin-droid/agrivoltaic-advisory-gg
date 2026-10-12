@@ -1,24 +1,24 @@
 {
  "package": "Gyeonggi advisory static package",
  "source_branch": "main",
- "source_head": "13b4ea4",
- "source_state": "synced 2026-10-07T19:18",
+ "source_head": "fd50de4",
+ "source_state": "synced 2026-10-12T16:32",
  "files": {
   "advisory.html": {
-   "bytes": 97684,
-   "sha256": "243b89882fa930134ee0c678001aaa1f8d232511cdb484a831c28c380e04e385"
+   "bytes": 96954,
+   "sha256": "2c4a89357ca175edb56e6301b6d71456097d3fecb684cd7c21420e6ecc8986d1"
   },
   "assets/region.js": {
    "bytes": 5718,
    "sha256": "55fb409a79d49fcfc0f172d3562476242c75bde6f5f7dd9f46aa06455b615f50"
   },
   "assets/v4.js": {
-   "bytes": 16637,
-   "sha256": "957d46d24c244367420b3d50ed3578ada0d0c45d2daa5ca9085567a8fae3dfae"
+   "bytes": 17896,
+   "sha256": "db8b99f3d475641efb2d55455d9ac420f47f16efa1cea6a5f3b6aaeee295073e"
   },
   "assets/v55.js": {
-   "bytes": 45978,
-   "sha256": "da75946eebcbe036de80cb538effd957d4fa178ae5a77a91b9b79f20802fef0d"
+   "bytes": 46028,
+   "sha256": "2d140fbb27133d26c7260d99c64c60faad375412078e34390e968877954b4f42"
   },
   "assets/vendor/leaflet/images/layers-2x.png": {
    "bytes": 1259,
@@ -993,5 +993,5 @@
    "sha256": "7b445483ed8fd196909a56ce4dffe6dcc73153ddeeebefc1e5d1ed693064652a"
   }
  },
- "revision": "r16 2026-10-07: 규모 눈금 1MW·3MW 추가(범례·요약·규모 카드·C4) · 자산 재export(표시 규모 22,222㎡ 선택지) · 1,000m 관련 서술 삭제 · 인수인계 §11 현행화"
+ "revision": "r17 2026-10-12: setback definition replaced (ADR-0056) — residential-building 5-house clusters, 50 m wall-to-wall; shared scripts, footnote [30], cache tags synced"
 }
