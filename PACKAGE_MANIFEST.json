@@ -1,8 +1,8 @@
 {
  "package": "Gyeonggi advisory static package",
  "source_branch": "main",
- "source_head": "fd50de4",
- "source_state": "synced 2026-10-12T16:32",
+ "source_head": "4bfe5f2",
+ "source_state": "synced 2026-10-13T00:03",
  "files": {
   "advisory.html": {
    "bytes": 96954,
@@ -53,8 +53,8 @@
    "sha256": "153ba84c03eb48db5c76325451cd9fd5256d6162a8f767b5fdf38a4f97724610"
   },
   "data_v4/advisory/gg_v1.json.gz": {
-   "bytes": 3148184,
-   "sha256": "7430d984ea3f9cbeef90be6fa9963e521b46a2049fabef31bbae8f3f6c87d2d2"
+   "bytes": 3150417,
+   "sha256": "ed2947c1bccf8e64a9b7243c379f9917a6a5f2e183215faa0ea442036fb2abfc"
   },
   "data_v4/bjd_v4.json.gz": {
    "bytes": 181534,
@@ -65,8 +65,8 @@
    "sha256": "f2e4c930a13b2d4d86831f80ac8d264ef97e4939616d47920a35c7acd491342e"
   },
   "data_v4/grid_emd.json.gz": {
-   "bytes": 712240,
-   "sha256": "af8c32c3cd7235543c4a3183c73d8a4e71574d65319bb131fa7d2f815c1b3728"
+   "bytes": 712204,
+   "sha256": "2dbc455e39f8e6b6ae62631c72b8fdb9cccbaf382fc6b539fa6bf8d446107ec7"
   },
   "data_v4/ind_bnd.json.gz": {
    "bytes": 109197,
@@ -429,8 +429,8 @@
    "sha256": "b6481d3281af074fd727fb12bf06e2a2a1e1cf20d92a129cc7ced3951bf22374"
   },
   "data_v4/units_index.json": {
-   "bytes": 720473,
-   "sha256": "31e32a71807859972eac33d96d5642927446b91b497ee4c92f3bbaa00946e0d7"
+   "bytes": 720541,
+   "sha256": "75439a2324c7b94b9886bb5e8800cb80aae6780c6276894962da66bafeb7a058"
   },
   "docs/ADVISORY_README.md": {
    "bytes": 9170,
@@ -933,8 +933,8 @@
    "sha256": "159da1b3bf6d0110b0b031683fa9c717f31c54299fa22cd4225ada1c9113bc55"
   },
   "data_v4/advisory/geom/41461.json.gz": {
-   "bytes": 233092,
-   "sha256": "3d00c028da8b8b3a1defa69b425fb7544cb8b649f243c6f49bfde40592560872"
+   "bytes": 268393,
+   "sha256": "5fba84e4a958689250c4450c060938537384b4fe33c520283c4eb4c02919d774"
   },
   "data_v4/advisory/geom/41463.json.gz": {
    "bytes": 49836,
@@ -993,5 +993,5 @@
    "sha256": "7b445483ed8fd196909a56ce4dffe6dcc73153ddeeebefc1e5d1ed693064652a"
   }
  },
- "revision": "r17 2026-10-12: setback definition replaced (ADR-0056) — residential-building 5-house clusters, 50 m wall-to-wall; shared scripts, footnote [30], cache tags synced"
+ "revision": "r18 2026-10-13: geometry reads cadastre through the ADR-0047 recovery map (41461: lab 1294714 1,114 m2 default; 413 units newly drawn, units without geometry 1,300 -> 887); grid upper value corrected (ADR-0059, hi only: duplicate EMD-feeder records removed, 93 EMDs, -1,279.463 MW nationally)"
 }
