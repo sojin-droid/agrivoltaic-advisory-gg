@@ -1,5 +1,5 @@
 // v4 데이터 렌더 도우미 — 수치는 전부 data_v4에서 (원칙 1). chrome(내비·푸터 골격)은 각 페이지 정적.
-// 각주: 브리프 공통 번호 [1]–[16] + 사이트 확장 [17]–[21]. 본문 마커 <sup class="fnref">[n]</sup>.
+// 각주: 브리프 공통 번호 [1]–[16] + 사이트 확장 [17]–[30]. 본문 마커 <sup class="fnref">[n]</sup>.
 // 통일 형식 — 발행처, 『자료명』, 판·취득 경로 (일자). 그리고 '용도' 설명 한 줄.
 const FOOTNOTES = {
   1: '『연속지적도(LSMD_CONT_LDREG, 원본 zip 내부 파일명 기준 2026-07)』 및 『토지·임야 원장 속성 정리본(Land_Processed — 제공기관·판·기준 시점 기록 없음, 로컬 스냅숏 2026-05-28)』 — 252개 시군 전수 39,726,310필지 (지오메트리·지목·소유 유형·용도지역·장부면적).<span class="fn-note">용도: 분석의 뼈대 — 필지 식별(PNU)과 면적·지목·소유 구분·용도지역 판정의 원천. 이격거리 적용 시 농지 필지 경계(200m 측정 기준)도 이 지적 기준.</span>',
@@ -43,14 +43,26 @@ const V4 = {
   cache: {},
   async data(name) {
     if (!this.cache[name]) {
-      const r = await fetch('data_v4/' + name + '.json');
+      const r = await fetch('data_v4/' + name + '.json').catch(() => null);
+      if (!r || !r.ok) { this.loadFailed(name); throw new Error('data_v4/' + name + '.json 불러오기 실패'); }
       this.cache[name] = await r.json();
     }
     return this.cache[name];
   },
+  // 자료 하나라도 못 받으면 수치 자리가 빈칸으로 남는다 — 화면 위에 한 번 알린다
+  loadFailed(name) {
+    if (document.getElementById('v4-loadfail')) return;
+    const d = document.createElement('div');
+    d.id = 'v4-loadfail'; d.setAttribute('role', 'alert');
+    d.style.cssText = 'background:#FDECEA;color:#8A1C12;border-bottom:1px solid #F3B8B0;padding:10px 16px;font-size:13.5px;text-align:center';
+    d.textContent = `일부 데이터(${name})를 불러오지 못해 수치가 비어 보일 수 있습니다. 잠시 후 새로고침해 주세요.`;
+    document.body.prepend(d);
+  },
   n(x) { return x.toLocaleString('ko-KR'); },
   km2(x, d = 1) { return x.toLocaleString('ko-KR', {minimumFractionDigits: d, maximumFractionDigits: d}); },
   mw(m2) { return Math.round(m2 * 0.045 / 1000).toLocaleString('ko-KR'); }, // 참고 환산: ㎡ 원값 기준
+  // 면적 표기(단위 포함) — km² 로 d 자리에서 0 으로 반올림되는 작은 값만 ㎡ 로 쓴다 (예: 0.12 km² · 3,210 ㎡)
+  area(m2, d = 2) { if (m2 == null) return '—'; return m2 < 0.5 * Math.pow(10, 6 - d) ? `${Math.round(m2).toLocaleString('ko-KR')} ㎡` : `${this.km2(m2 / 1e6, d)} km²`; },
   // 카운트업 — 동적 삽입 수치용 (site.js .count는 정적 DOM 전용이라 별도 구현)
   countup(el, target, decimals = 0) {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -96,7 +108,7 @@ const V4 = {
         `<div class="fn-group">${g}</div><ol class="fnlist">` +
         nums.map(n => `<li id="fn-${n}" value="${n}">${FOOTNOTES[n]}</li>`).join('') +
         `</ol>`).join('') +
-      `<div class="fn">번호 [1]–[16]은 정책 브리프와 공통, [17]–[27]은 사이트 추가분.
+      `<div class="fn">번호 [1]–[16]은 정책 브리프와 공통, [17]–[30]은 사이트 추가분.
       본문 위첨자 [n]을 누르면 해당 출처로 이동.</div>
     </div>`;
     ftr.parentNode.insertBefore(sec, ftr);
@@ -109,16 +121,19 @@ const V4 = {
   async footer() {
     this.footnotes();
     const m = await this.data('meta_v4');
+    // 수치 갱신일 = 요약(meta_v4)과 시나리오 실행값(results_v4) 중 나중 것 — 이격 기준 교체(ADR-0056)처럼 실행값만 다시 만든 경우도 반영
+    const r = await this.data('results_v4').catch(() => null);
+    const day = [m.generated, r && r.generated].filter(Boolean).map(g => String(g).split(' ')[0]).sort().pop();
     const el = document.querySelector('footer.v4 .wrap');
     const full = document.body.dataset.sources === 'full';
     if (el) el.innerHTML = full
       ? `<div>PLANiT Institute · 영농형 태양광 — 전국 영농형 태양광 모아보기</div>` +
-        `<div>수치 생성일 ${String(m.generated).split(' ')[0]} · MW는 면적 환산 참고값(0.045 kW/㎡) · 소유 구분은 지적 원장의 소유 유형 구분(개인 식별 아님)</div>` +
+        `<div>수치 갱신일 ${day} · MW는 면적 환산 참고값(0.045 kW/㎡) · 소유 구분은 지적 원장의 소유 유형 구분(개인 식별 아님)</div>` +
         `<div style="margin-top:6px"><a href="local.html">우리 동네 분석하기 →</a> · <a href="#contact">문의</a></div>` +
-        `<div style="margin-top:6px">외부 자문 자료 — <a href="advisory.html">경기도 데이터 검토(경기연구원)</a> · <a href="cluster_advisory.html">클러스터링 방법론(KEI)</a></div>`
-      : `<div>PLANiT Institute · 영농형 태양광 · 수치 생성일 ${String(m.generated).split(' ')[0]} · MW는 면적 환산 참고값 · 설치 가능 농지는 인허가 가능 여부와 다름 — ` +
+        `<div style="margin-top:6px">외부 자문 자료 — <a href="advisory.html">영농형 태양광 클러스터 위치 연구 자문(경기·파주·여주·보령)</a> · <a href="cluster_advisory.html">클러스터링 방법론(KEI)</a></div>`
+      : `<div>PLANiT Institute · 영농형 태양광 · 수치 갱신일 ${day} · MW는 면적 환산 참고값 · 설치 가능 농지는 인허가 가능 여부와 다름 — ` +
         `<a href="method.html"><b>출처·방법론은 근거와 방법 →</b></a> · <a href="local.html">우리 동네 분석하기 →</a></div>` +
-        `<div style="margin-top:6px">외부 자문 자료 — <a href="advisory.html">경기도 데이터 검토(경기연구원)</a> · <a href="cluster_advisory.html">클러스터링 방법론(KEI)</a></div>`;
+        `<div style="margin-top:6px">외부 자문 자료 — <a href="advisory.html">영농형 태양광 클러스터 위치 연구 자문(경기·파주·여주·보령)</a> · <a href="cluster_advisory.html">클러스터링 방법론(KEI)</a></div>`;
   },
 };
 

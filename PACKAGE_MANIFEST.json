@@ -1,24 +1,24 @@
 {
  "package": "Gyeonggi advisory static package",
  "source_branch": "main",
- "source_head": "4bfe5f2",
- "source_state": "synced 2026-10-13T00:03",
+ "source_head": "bebc9b4",
+ "source_state": "synced 2026-10-16T15:33",
  "files": {
   "advisory.html": {
-   "bytes": 96954,
-   "sha256": "2c4a89357ca175edb56e6301b6d71456097d3fecb684cd7c21420e6ecc8986d1"
+   "bytes": 121498,
+   "sha256": "a30553a899aec816cdce7fcdc807e3e1cd7e76ed66972df98d975e11cdd3c063"
   },
   "assets/region.js": {
    "bytes": 5718,
    "sha256": "55fb409a79d49fcfc0f172d3562476242c75bde6f5f7dd9f46aa06455b615f50"
   },
   "assets/v4.js": {
-   "bytes": 17896,
-   "sha256": "db8b99f3d475641efb2d55455d9ac420f47f16efa1cea6a5f3b6aaeee295073e"
+   "bytes": 19372,
+   "sha256": "a6ff20714e53856ac2034048ef0565138858a82ca589f3ffa430cd7858908ed7"
   },
   "assets/v55.js": {
-   "bytes": 46028,
-   "sha256": "2d140fbb27133d26c7260d99c64c60faad375412078e34390e968877954b4f42"
+   "bytes": 46805,
+   "sha256": "91e5d040da8031fde182a06febe8f40d5bbb4ff210064e3d12171acc1cbce4df"
   },
   "assets/vendor/leaflet/images/layers-2x.png": {
    "bytes": 1259,
@@ -53,8 +53,8 @@
    "sha256": "153ba84c03eb48db5c76325451cd9fd5256d6162a8f767b5fdf38a4f97724610"
   },
   "data_v4/advisory/gg_v1.json.gz": {
-   "bytes": 3150417,
-   "sha256": "ed2947c1bccf8e64a9b7243c379f9917a6a5f2e183215faa0ea442036fb2abfc"
+   "bytes": 3151694,
+   "sha256": "f2579c180c8b7e9afa93d36c51d02871a6d2c0705b08736793b89d564b399aa8"
   },
   "data_v4/bjd_v4.json.gz": {
    "bytes": 181534,
@@ -433,8 +433,8 @@
    "sha256": "75439a2324c7b94b9886bb5e8800cb80aae6780c6276894962da66bafeb7a058"
   },
   "docs/ADVISORY_README.md": {
-   "bytes": 9170,
-   "sha256": "115a549dba9880489ed81583f0b7a2863139b1644b1b5e1c35d9e6428a624b23"
+   "bytes": 8413,
+   "sha256": "1cd7d415297d01ea913646c5749cd6d71c4d103354aac83fc406086ba89a4d26"
   },
   "style.css": {
    "bytes": 43321,
@@ -991,7 +991,223 @@
   "data_v4/advisory/geom/41830.json.gz": {
    "bytes": 198441,
    "sha256": "7b445483ed8fd196909a56ce4dffe6dcc73153ddeeebefc1e5d1ed693064652a"
+  },
+  "data_v4/advisory/w10/41111.json.gz": {
+   "bytes": 3239,
+   "sha256": "23a0eb5d7f881a4793e833b63c646ba9a3523aa2e654757bc5392c42f60de75a"
+  },
+  "data_v4/advisory/w10/41113.json.gz": {
+   "bytes": 9051,
+   "sha256": "64b12143e886e0c1266429bf6a5d955e975764a99220a34a1f6cfe6a577b230e"
+  },
+  "data_v4/advisory/w10/41115.json.gz": {
+   "bytes": 2332,
+   "sha256": "65d0dae2d8c8a282b01936d2b3d7462b082d45a6135137029c0347990902a687"
+  },
+  "data_v4/advisory/w10/41117.json.gz": {
+   "bytes": 3736,
+   "sha256": "5c1cf3cfc51f716f42b3b25a095afe5b3303b463e2c98da0c2f6738806b3e58f"
+  },
+  "data_v4/advisory/w10/41131.json.gz": {
+   "bytes": 4663,
+   "sha256": "c73eb1108aa9d608a3280aab9ac8fbc83996d401f7d55289e5d2b799cb3a7290"
+  },
+  "data_v4/advisory/w10/41133.json.gz": {
+   "bytes": 568,
+   "sha256": "b1752e03328222601d6a988e3090bbed25a9b0a98711a96f5741ab4ac32ee6f3"
+  },
+  "data_v4/advisory/w10/41135.json.gz": {
+   "bytes": 2214,
+   "sha256": "0aab52e4e6c5c2413117d0e1f43292c85783e4e8117b1afbba721904f8e51bc3"
+  },
+  "data_v4/advisory/w10/41150.json.gz": {
+   "bytes": 7458,
+   "sha256": "4e36e2517aace39f3fad0d8af49430b661ad333ac00eab71abb652ad20bac8a6"
+  },
+  "data_v4/advisory/w10/41171.json.gz": {
+   "bytes": 2298,
+   "sha256": "66258db287e9c59eb49b355972c32ca0714f9e4ce77f22a84886a2841212e7ea"
+  },
+  "data_v4/advisory/w10/41173.json.gz": {
+   "bytes": 1964,
+   "sha256": "77b4034562d6ad8a1a90e19626b44b925eb1cdf09092c462bc131fec98a802c3"
+  },
+  "data_v4/advisory/w10/41192.json.gz": {
+   "bytes": 1903,
+   "sha256": "33aa6d5d09d436b2e78f875342985bf656e6b79c5b0a54eaaa23bdd64b4f1df8"
+  },
+  "data_v4/advisory/w10/41194.json.gz": {
+   "bytes": 793,
+   "sha256": "0c27fab9dfb78b62e09103c947d06799ecd7e9686b70699a5b233b3d3182551b"
+  },
+  "data_v4/advisory/w10/41196.json.gz": {
+   "bytes": 4049,
+   "sha256": "39affffa6fec6b58b04f68c0db8bf5e6c3b0bebc034f8644205aca6286391263"
+  },
+  "data_v4/advisory/w10/41210.json.gz": {
+   "bytes": 5394,
+   "sha256": "56816f4b4ce090d033183ee52da26b8f529fe4b98cbedda41c97f1ef10e00326"
+  },
+  "data_v4/advisory/w10/41220.json.gz": {
+   "bytes": 204402,
+   "sha256": "4c87cedb598180777b9eea0d3bd17de0c4fdea039bee6f67bdd952f41f2f2293"
+  },
+  "data_v4/advisory/w10/41250.json.gz": {
+   "bytes": 15314,
+   "sha256": "364b4a5608d711d1ee8b523cd5dc3dfb6755c95ceedcc7fe4ec5e780482c06a5"
+  },
+  "data_v4/advisory/w10/41271.json.gz": {
+   "bytes": 7107,
+   "sha256": "ec649edb5cbbcad12ce671d8af332739b465cbc81c3935cb583be74bae349904"
+  },
+  "data_v4/advisory/w10/41273.json.gz": {
+   "bytes": 14597,
+   "sha256": "7d1dd1d992acdbdce97bd4f69b466de18b8f372760ef48a3af8bad7489c5cbbb"
+  },
+  "data_v4/advisory/w10/41281.json.gz": {
+   "bytes": 18703,
+   "sha256": "19d9a3d3900024ced08592eb4f0c23ba911d67745e135eaab1e33b2ebb960a57"
+  },
+  "data_v4/advisory/w10/41285.json.gz": {
+   "bytes": 10598,
+   "sha256": "6059eae1ba8ec95059c2fb9f9f44aaa81d3277ce3762678529c24da70d3f52cc"
+  },
+  "data_v4/advisory/w10/41287.json.gz": {
+   "bytes": 9141,
+   "sha256": "29d5646fdaf3d18317cea7f89e8b909762dee2bcb73359ec3f1b752672056da2"
+  },
+  "data_v4/advisory/w10/41290.json.gz": {
+   "bytes": 4024,
+   "sha256": "9dc45768e5af024e07c811e5c739038f28701bcc8f202f4a99e795487b716b32"
+  },
+  "data_v4/advisory/w10/41310.json.gz": {
+   "bytes": 3424,
+   "sha256": "94b4e53209d805778e7de6135e079e23964a656313615079df95443e208f95d9"
+  },
+  "data_v4/advisory/w10/41360.json.gz": {
+   "bytes": 87446,
+   "sha256": "b4d917468ad9e88eed641bfe786436ed66b55bf03aff37966c89580e1df3d011"
+  },
+  "data_v4/advisory/w10/41370.json.gz": {
+   "bytes": 22165,
+   "sha256": "2a88c9ba1553a5e901f053f257bb6c603de68d50c2973f9da9a70ed74fd391bd"
+  },
+  "data_v4/advisory/w10/41390.json.gz": {
+   "bytes": 7830,
+   "sha256": "7118e177d3c2b17455f8c73ee522b7e82c212c97b8f9ae0dcb7b1b8262d314d6"
+  },
+  "data_v4/advisory/w10/41410.json.gz": {
+   "bytes": 1969,
+   "sha256": "a44df58b683dd797d63d7ebb8a13b278dbc121da1b0e833a2a1d03f97c8580ed"
+  },
+  "data_v4/advisory/w10/41430.json.gz": {
+   "bytes": 2776,
+   "sha256": "2df85c6df0d30f4e441331e4dd2ee78d27ab4fbda9d4a1e80270142033730c85"
+  },
+  "data_v4/advisory/w10/41450.json.gz": {
+   "bytes": 2961,
+   "sha256": "f3372743026aa9a5dd8406433c52845a562d15a538d6f73d258d694ad2f835f3"
+  },
+  "data_v4/advisory/w10/41461.json.gz": {
+   "bytes": 168270,
+   "sha256": "fa9132cd8fb3e35344c2c624371df1bf67818ce7af4c09fe6a74955bbc183746"
+  },
+  "data_v4/advisory/w10/41463.json.gz": {
+   "bytes": 27998,
+   "sha256": "341bd7703e1205c64698717d400dd24c2e2cb180201f7f4e2c20a3af4dba8ebf"
+  },
+  "data_v4/advisory/w10/41465.json.gz": {
+   "bytes": 7975,
+   "sha256": "94a763177041a7d6d9b92c69fe7272a80a52cd8e069bcc1a9c044523796c5293"
+  },
+  "data_v4/advisory/w10/41480.json.gz": {
+   "bytes": 110777,
+   "sha256": "e43116e0425302fc06bcb7cda5534f729821ab59abac61d6d4441a065f5bce2a"
+  },
+  "data_v4/advisory/w10/41500.json.gz": {
+   "bytes": 219049,
+   "sha256": "e5fdb3f34cde3570b3d1124ad584e07e40aa7c1b9a8cf811efbf929ec7d309a4"
+  },
+  "data_v4/advisory/w10/41550.json.gz": {
+   "bytes": 186170,
+   "sha256": "f4d8a945acf1af0129cc1154408c5a0d9d5b6d95471337bc8cd63ba947495c82"
+  },
+  "data_v4/advisory/w10/41570.json.gz": {
+   "bytes": 36165,
+   "sha256": "3ae84d2304c7f26ddac77cce3f30cf707addaa9362f06071b165011c34431169"
+  },
+  "data_v4/advisory/w10/41590.json.gz": {
+   "bytes": 245293,
+   "sha256": "ebae55a1fd4dd386a497ef106cd1c264937bcfe40a3544d641ddec3c0caeb02f"
+  },
+  "data_v4/advisory/w10/41610.json.gz": {
+   "bytes": 74114,
+   "sha256": "a014ecd90794ad1212a085a6caa08b8b5327232a1eff6262ef56472ba1d6888c"
+  },
+  "data_v4/advisory/w10/41630.json.gz": {
+   "bytes": 76874,
+   "sha256": "c8b5a4d1cec229bcaad84d544b9cb533967fc2c875b87eae849ce319ec6b38ae"
+  },
+  "data_v4/advisory/w10/41650.json.gz": {
+   "bytes": 172455,
+   "sha256": "bf4c6736f78b63cd20470cc2b332bda05143d7cfcaba8630d52b6dd840a95b26"
+  },
+  "data_v4/advisory/w10/41670.json.gz": {
+   "bytes": 199924,
+   "sha256": "bd8658f9ba5aec1aec851a29756632ec2f7a269afdde9e41e712c0d82449161d"
+  },
+  "data_v4/advisory/w10/41800.json.gz": {
+   "bytes": 74235,
+   "sha256": "f1433dcafe9089778207d4a56e0e3602132f6eee72488dee9635f19feaa9a3d0"
+  },
+  "data_v4/advisory/w10/41820.json.gz": {
+   "bytes": 101665,
+   "sha256": "a0cceba4b78e4a88e9496792c0640276cf65db2e0d28a390def9571e1bcb080d"
+  },
+  "data_v4/advisory/w10/41830.json.gz": {
+   "bytes": 122841,
+   "sha256": "8df46cf8865da6ff453c4dbae2ce1a3384d4640576db6f05967f58a3b2b808cb"
+  },
+  "data_v4/advisory/w10/44180.json.gz": {
+   "bytes": 145104,
+   "sha256": "32c7e968bea84504d10bc357ecac80edf8f9d41bdbf39e0fb8384ec86fa44d76"
+  },
+  "data_v4/advisory/w10_index.json": {
+   "bytes": 4439,
+   "sha256": "8b870815686954d4179aaf54ffba8207823856d1185b7536d54b449fb5c20afe"
+  },
+  "data_v4/big_sgg_v4.json": {
+   "bytes": 62734,
+   "sha256": "f5b0eec8f4904c7b165f483b300babe45b6031c6ed50725461bf435be6444fb8"
+  },
+  "data_v4/top10/44180.json.gz": {
+   "bytes": 301141,
+   "sha256": "aa8ce908a2889869b6240f4f284ed31806196875f78578d9f6eac74a3e699a03"
+  },
+  "data_v4/units/41220.json.gz": {
+   "bytes": 412696,
+   "sha256": "30e734c7d9abe7325374e83474869065285e6731c97ebef252ca53d11bb1bed4"
+  },
+  "data_v4/units/41590.json.gz": {
+   "bytes": 443151,
+   "sha256": "e89f94c543a62d8b3cfd38eca5d36473ca388528cc4eecb134e0a6975587e59f"
+  },
+  "data_v4/units/41500.json.gz": {
+   "bytes": 383124,
+   "sha256": "9dcce8dc83df42200c087071582e8ac4a9a936b6495658ecdf6ee450215112cd"
+  },
+  "data_v4/units/41480.json.gz": {
+   "bytes": 205200,
+   "sha256": "516b666ac675c87da8c54128add07b60c9d0c8f2cc76c9143eb38a87a5160b6d"
+  },
+  "data_v4/units/41670.json.gz": {
+   "bytes": 314982,
+   "sha256": "6afb85993858b3de5e5648d2d86e5cb0e488a5f2e1f872af9084c25d562a784c"
+  },
+  "data_v4/units/44180.json.gz": {
+   "bytes": 268963,
+   "sha256": "39b9ae8f38ed74a96fe08fa871a15c1e3e3240e7b0d938f1a4b774d47bf22e00"
   }
  },
- "revision": "r18 2026-10-13: geometry reads cadastre through the ADR-0047 recovery map (41461: lab 1294714 1,114 m2 default; 413 units newly drawn, units without geometry 1,300 -> 887); grid upper value corrected (ADR-0059, hi only: duplicate EMD-feeder records removed, 93 EMDs, -1,279.463 MW nationally)"
+ "revision": "r19 2026-10-16: 자문 화면 개편(10/13~15, 탭 구성·시군별 후보 지도·질문 9개·출처 표) 동기화 · 지역별 지도용 시군 도형 6개·보령 TOP 10·상위 시군 목록 추가 · TOP 10 링크를 사이트 주소로 · 폭 10 m 미만 띠 제외 레이어(잠정) 포함 · 후보 공간 값(하한·상한·면적·등급)은 r18 과 같음"
 }
